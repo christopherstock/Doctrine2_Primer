@@ -1,7 +1,7 @@
 <?php
 /**
  *  TODO rename table 'bugs' to 'bug'.
- *
+ *  TODO Apply team coding style for all sources!
  */
 
 use Doctrine\ORM\Tools\Setup;
@@ -17,6 +17,8 @@ $config = Setup::createAnnotationMetadataConfiguration(
     ),
     $isDevMode
 );
+
+// echo "[" . $config->getProxyDir() . "]<br><br>";
 
 // database configuration parameters
 $conn = array(

@@ -39,14 +39,14 @@ class Bug
     /**
      * @ManyToOne(targetEntity="User", inversedBy="assignedBugs")
      *
-     * @var User[]
+     * @var User
      **/
     protected $engineer;
 
     /**
      * @ManyToOne(targetEntity="User", inversedBy="reportedBugs")
      *
-     * @var User[]
+     * @var User
      **/
     protected $reporter;
 
@@ -137,7 +137,7 @@ class Bug
     }
 
     /**
-     * @return User[]
+     * @return User
      */
     public function getEngineer()
     {
@@ -145,7 +145,7 @@ class Bug
     }
 
     /**
-     * @return User[]
+     * @return User
      */
     public function getReporter()
     {
