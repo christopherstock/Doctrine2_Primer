@@ -168,4 +168,12 @@ class Bug
         return $this->products;
     }
 
+    /**
+     * @return void
+     */
+    public function close()
+    {
+        $this->status = "CLOSE";
+    }
+
 }

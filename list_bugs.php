@@ -14,8 +14,10 @@ foreach ($bugs as $bug)
 {
     echo '<pre>';
     echo $bug->getDescription()." - ".$bug->getCreated()->format('d.m.Y H:i:s')."\n";
+    echo "    Id: ".$bug->getId()."\n";
     echo "    Reported by: ".$bug->getReporter()->getName()."\n";
     echo "    Assigned to: ".$bug->getEngineer()->getName()."\n";
+    echo "    Status: ".$bug->getStatus()."\n";
     foreach ($bug->getProducts() as $product) {
         echo "    Platform: ".$product->getName()."\n";
     }
