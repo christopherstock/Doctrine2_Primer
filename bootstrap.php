@@ -1,4 +1,8 @@
 <?php
+/**
+ *  TODO rename table 'bugs' to 'bug'.
+ *
+ */
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
