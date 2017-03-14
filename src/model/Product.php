@@ -1,8 +1,8 @@
 <?php
 /**
- * @Entity @Table(name="products")
+ * @Entity @Table(name="product")
  **/
-class Product
+class Model_Product
 {
 
     /**

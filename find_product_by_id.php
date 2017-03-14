@@ -3,7 +3,7 @@
 require_once( __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php" );
 
 $id = 7;
-$product = $entityManager->find('Product', $id);
+$product = $entityManager->find('Model_Product', $id);
 
 if ($product === null) {
     echo "No product found.\n";

@@ -2,12 +2,12 @@
 
 require_once( __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php" );
 
-$dql = 'SELECT b, e, r FROM Bug AS b JOIN b.engineer AS e JOIN b.reporter AS r ORDER BY b.created DESC';
+$dql = 'SELECT b, e, r FROM Model_Bug AS b JOIN b.engineer AS e JOIN b.reporter AS r ORDER BY b.created DESC';
 
 $query = $entityManager->createQuery( $dql );
 $query->setMaxResults( 30 );
 
-/** @var Bug[] $bugs */
+/** @var Model_Bug[] $bugs */
 $bugs = $query->getResult();
 
 foreach ($bugs as $bug)

@@ -2,8 +2,8 @@
 
 require_once( __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php" );
 
-/** @var Bug[] $bugs */
-$bugs = $entityManager->getRepository('Bug')
+/** @var Model_Bug[] $bugs */
+$bugs = $entityManager->getRepository('Model_Bug')
     ->findBy(
         array(
             'status' => 'CLOSE',

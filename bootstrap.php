@@ -1,6 +1,5 @@
 <?php
 /**
- *  TODO rename table 'bugs' to 'bug'.
  *  TODO Apply team coding style for all sources!
  */
 
@@ -13,7 +12,11 @@ require_once( "vendor/autoload.php" );
 $isDevMode = true;
 $config = Setup::createAnnotationMetadataConfiguration(
     array(
-        __DIR__ . DIRECTORY_SEPARATOR . 'src',
+        __DIR__
+        . DIRECTORY_SEPARATOR
+        . 'src'
+        . DIRECTORY_SEPARATOR
+        . 'model'
     ),
     $isDevMode
 );

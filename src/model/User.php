@@ -3,9 +3,9 @@
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity @Table(name="users")
+ * @Entity @Table(name="user")
  */
-class User
+class Model_User
 {
 
     /**
@@ -23,14 +23,14 @@ class User
     protected $name;
 
     /**
-     * @OneToMany(targetEntity="Bug", mappedBy="reporter")
+     * @OneToMany(targetEntity="Model_Bug", mappedBy="reporter")
      *
-     * @var Bug[]
+     * @var Model_Bug[]
      */
     protected $reportedBugs;
 
     /**
-     * @OneToMany(targetEntity="Bug", mappedBy="engineer")
+     * @OneToMany(targetEntity="Model_Bug", mappedBy="engineer")
      *
      * @var ArrayCollection
      */
@@ -67,7 +67,7 @@ class User
     }
 
     /**
-     * @param Bug $bug
+     * @param Model_Bug $bug
      */
     public function addReportedBug($bug)
     {
@@ -75,7 +75,7 @@ class User
     }
 
     /**
-     * @param Bug $bug
+     * @param Model_Bug $bug
      */
     public function assignedToBug($bug)
     {

@@ -3,10 +3,10 @@
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity(repositoryClass="BugRepository")
- * @Table(name="bugs")
+ * @Entity(repositoryClass="Model_BugRepository")
+ * @Table(name="bug")
  */
-class Bug
+class Model_Bug
 {
 
     /**
@@ -38,21 +38,21 @@ class Bug
     protected $status;
 
     /**
-     * @ManyToOne(targetEntity="User", inversedBy="assignedBugs")
+     * @ManyToOne(targetEntity="Model_User", inversedBy="assignedBugs")
      *
-     * @var User
+     * @var Model_User
      **/
     protected $engineer;
 
     /**
-     * @ManyToOne(targetEntity="User", inversedBy="reportedBugs")
+     * @ManyToOne(targetEntity="Model_User", inversedBy="reportedBugs")
      *
-     * @var User
+     * @var Model_User
      **/
     protected $reporter;
 
     /**
-     * @ManyToMany(targetEntity="Product")
+     * @ManyToMany(targetEntity="Model_Product")
      *
      * @var ArrayCollection
      */
@@ -120,7 +120,7 @@ class Bug
     }
 
     /**
-     * @param User $engineer
+     * @param Model_User $engineer
      */
     public function setEngineer($engineer)
     {
@@ -129,7 +129,7 @@ class Bug
     }
 
     /**
-     * @param User $reporter
+     * @param Model_User $reporter
      */
     public function setReporter($reporter)
     {
@@ -138,7 +138,7 @@ class Bug
     }
 
     /**
-     * @return User
+     * @return Model_User
      */
     public function getEngineer()
     {
@@ -146,7 +146,7 @@ class Bug
     }
 
     /**
-     * @return User
+     * @return Model_User
      */
     public function getReporter()
     {
@@ -154,7 +154,7 @@ class Bug
     }
 
     /**
-     * @param Product $product
+     * @param Model_Product $product
      */
     public function assignToProduct($product)
     {

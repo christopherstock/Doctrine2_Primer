@@ -2,8 +2,8 @@
 
 require_once( __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php" );
 
-/** @var BugRepository $bugRepository */
-$bugRepository = $entityManager->getRepository('Bug');
+/** @var Model_BugRepository $bugRepository */
+$bugRepository = $entityManager->getRepository('Model_Bug');
 $bugs = $bugRepository->getRecentBugs();
 
 foreach ($bugs as $bug)

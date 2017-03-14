@@ -4,7 +4,7 @@ require_once( __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php" );
 
 $theBugId = 7;
 
-$bug = $entityManager->find("Bug", (int)$theBugId);
+$bug = $entityManager->find("Model_Bug", (int)$theBugId);
 
-echo "Bug: " . $bug->getDescription() . "\n";
+echo "Model_Bug: " . $bug->getDescription() . "\n";
 echo "Engineer: " . $bug->getEngineer()->getName() . "\n";
