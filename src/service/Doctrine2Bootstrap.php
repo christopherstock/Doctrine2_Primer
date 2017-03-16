@@ -16,7 +16,7 @@ class Service_Doctrine2Bootstrap
      */
     public static function createEntityManager()
     {
-        Service_Console::log('Bootstrapping the Doctrine 2 Framework.');
+        Service_Console::log('Bootstrapping Doctrine 2 Framework by creating the <b>Doctrine 2 entity manager</b>..');
 
         // Create a simple "default" Doctrine ORM configuration for Annotations
         $config = Setup::createAnnotationMetadataConfiguration(
@@ -40,9 +40,21 @@ class Service_Doctrine2Bootstrap
         );
 
         // obtaining the entity manager
-        $entityManager = EntityManager::create($conn, $config);
+        $entityManager = null;
+        try {
 
-        Service_Console::log('Succeeded.', Service_Console::COLOR_GREEN);
+            $entityManager = EntityManager::create($conn, $config);
+
+        } catch (Exception $e) {
+            Service_Console::log('<b>Failed!</b>', Service_Console::COLOR_RED);
+            Service_Console::log();
+
+            throw $e;
+        }
+
+        Service_Console::log('<b>Succeeded.</b>', Service_Console::COLOR_GREEN);
+        Service_Console::log();
+        Service_Console::log('============================================================');
         Service_Console::log();
 
         return $entityManager;
