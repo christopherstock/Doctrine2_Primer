@@ -1,7 +1,4 @@
 <?php
-/**
- *  TODO Apply team coding style for all sources!
- */
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
