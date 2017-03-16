@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles all doctrine 2 example actions for the user.
+ * All doctrine 2 example actions for the user.
  */
 class Example_User
 {
@@ -17,17 +17,20 @@ class Example_User
 
         Service_Console::log('Creating a new user with username [' . $newUsername . '] into the database..');
 
-        $user = new Model_User();
-        $user->setName( $newUsername );
+        $newUser = new Model_User();
+        $newUser->setName($newUsername);
 
-        $entityManager->persist( $user );
+        $entityManager->persist($newUser);
         $entityManager->flush();
 
         Service_Console::log(
-            '<b>Successfully created new user with ID ' . $user->getId() . '.</b>',
+            '<b>Successfully created new user with ID ' . $newUser->getId() . '.</b>',
             Service_Console::COLOR_GREEN
         );
         Service_Console::log();
+
+        // show main menu
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
     }
 
 }
