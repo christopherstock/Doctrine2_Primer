@@ -104,4 +104,31 @@ class Example_Product
         Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
     }
 
+    /**
+     * Alters the name of a specific product.
+     */
+    public static function updateProductName()
+    {
+        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+
+        $productId = 7;
+        $newName = 'newName-product' . $productId;
+
+        Service_Console::log('Updating name for Product id [' . $productId . '] to [' . $newName . '] ..');
+        Service_Console::log();
+
+        /** @var Model_Product $product */
+        $product = $entityManager->find('Model_Product', $productId);
+
+        $product->setName($newName);
+
+        $entityManager->flush();
+
+        Service_Console::log('Updated name for product with id [' . $product->getId() . '] to [' . $product->getName() . '] ..');
+        Service_Console::log();
+
+        // show main menu
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+    }
+
 }

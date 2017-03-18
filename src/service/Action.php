@@ -18,7 +18,8 @@ class Service_Action
     const ACTION_SHOW_ALL_BUGS_ARRAYS         = 10;
     const ACTION_SHOW_ALL_BUGS_REPOSITORY     = 11;
     const ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS = 12;
-    const ACTION_CLOSE_BUG                    = 13;
+    const ACTION_ALTER_PRODUCT_NAME           = 13;
+    const ACTION_CLOSE_BUG                    = 14;
 
     /**
      * Performs the specified action.
@@ -81,6 +82,10 @@ class Service_Action
                 Example_Bug::showOpenBugsWithProducts();
                 break;
 
+            case self::ACTION_ALTER_PRODUCT_NAME:
+                Example_Product::updateProductName();
+                break;
+
             case self::ACTION_CLOSE_BUG:
                 Example_Bug::close();
                 break;
@@ -134,6 +139,7 @@ class Service_Action
         Service_Console::log();
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS . '">Show open Bugs with according Products</a>');
         Service_Console::log();
+        Service_Console::log('<a href="?action=' . self::ACTION_ALTER_PRODUCT_NAME           . '">Alter a product\'s name</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_CLOSE_BUG                    . '">Set a Bug\'s status to \'CLOSE\'</a>');
         Service_Console::log();
     }
