@@ -1,6 +1,6 @@
 <?php
 /**
- * All doctrine 2 example actions for the user.
+ * All doctrine 2 example actions for the 'user' entity.
  */
 class Example_User
 {

@@ -1,12 +1,12 @@
 <?php
 /**
- * All doctrine 2 example actions for the product.
+ * All doctrine 2 example actions for the 'product' entity.
  */
 class Example_Product
 {
 
     /**
-     * Inserts a new user into the database.
+     * Inserts a new product into the database.
      */
     public static function create()
     {
