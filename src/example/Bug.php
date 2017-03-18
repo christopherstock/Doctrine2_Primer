@@ -71,6 +71,34 @@ class Example_Bug
     }
 
     /**
+     * Finds a specific bug by id.
+     */
+    public static function findOne()
+    {
+        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+
+        $bugId = 7;
+        Service_Console::log('Retreiving Bug by id [' . $bugId . '] ..');
+
+        /** @var Model_Bug $bug */
+        $bug = $entityManager->find("Model_Bug", $bugId);
+
+        Service_Console::log(
+            'Bug id ['
+            . $bug->getId()
+            . '] description ['
+            . $bug->getDescription()
+            . '] reporter name ['
+            . $bug->getReporter()->getName()
+            . '] assignee name ['
+            . $bug->getEngineer()->getName() . ']'
+        );
+        Service_Console::log();
+
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+    }
+
+    /**
      * Shows all bugs using doctrine models.
      */
     public static function showAllUsingModels()

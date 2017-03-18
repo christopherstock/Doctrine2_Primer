@@ -9,11 +9,12 @@ class Service_Action
     const ACTION_CREATE_USER                  = 1;
     const ACTION_CREATE_PRODUCT               = 2;
     const ACTION_CREATE_BUG                   = 3;
-    const ACTION_SHOW_ALL_PRODUCTS            = 4;
-    const ACTION_SHOW_ALL_BUGS_MODELS         = 5;
-    const ACTION_SHOW_ALL_BUGS_ARRAYS         = 6;
-    const ACTION_SHOW_ALL_BUGS_REPOSITORY     = 7;
-    const ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS = 8;
+    const ACTION_FIND_BUG                     = 4;
+    const ACTION_SHOW_ALL_PRODUCTS            = 5;
+    const ACTION_SHOW_ALL_BUGS_MODELS         = 6;
+    const ACTION_SHOW_ALL_BUGS_ARRAYS         = 7;
+    const ACTION_SHOW_ALL_BUGS_REPOSITORY     = 8;
+    const ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS = 9;
 
     /**
      * Performs the specified action.
@@ -38,6 +39,10 @@ class Service_Action
 
             case self::ACTION_CREATE_BUG:
                 Example_Bug::create();
+                break;
+
+            case self::ACTION_FIND_BUG:
+                Example_Bug::findOne();
                 break;
 
             case self::ACTION_SHOW_ALL_PRODUCTS:
@@ -96,6 +101,8 @@ class Service_Action
         Service_Console::log('<a href="?action=' . self::ACTION_CREATE_USER                  . '">Create User</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_CREATE_PRODUCT               . '">Create Product</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_CREATE_BUG                   . '">Create Bug</a>');
+        Service_Console::log();
+        Service_Console::log('<a href="?action=' . self::ACTION_FIND_BUG                     . '">Find Bug</a>');
         Service_Console::log();
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_PRODUCTS            . '">Show all Products</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_BUGS_MODELS         . '">Show all Bugs (Models)</a>');
