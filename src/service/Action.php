@@ -12,7 +12,8 @@ class Service_Action
     const ACTION_SHOW_ALL_PRODUCTS            = 4;
     const ACTION_SHOW_ALL_BUGS_MODELS         = 5;
     const ACTION_SHOW_ALL_BUGS_ARRAYS         = 6;
-    const ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS = 7;
+    const ACTION_SHOW_ALL_BUGS_REPOSITORY     = 7;
+    const ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS = 8;
 
     /**
      * Performs the specified action.
@@ -49,6 +50,10 @@ class Service_Action
 
             case self::ACTION_SHOW_ALL_BUGS_ARRAYS:
                 Example_Bug::showAllUsingArrays();
+                break;
+
+            case self::ACTION_SHOW_ALL_BUGS_REPOSITORY:
+                Example_Bug::showAllUsingRepository();
                 break;
 
             case self::ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS:
@@ -95,6 +100,8 @@ class Service_Action
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_PRODUCTS            . '">Show all Products</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_BUGS_MODELS         . '">Show all Bugs (Models)</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_BUGS_ARRAYS         . '">Show all Bugs (Arrays)</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_BUGS_REPOSITORY     . '">Show all Bugs (Repository)</a>');
+        Service_Console::log();
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS . '">Show open Bugs with according Products</a>');
         Service_Console::log();
     }

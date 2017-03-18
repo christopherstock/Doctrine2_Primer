@@ -169,6 +169,37 @@ class Example_Bug
     }
 
     /**
+     * Shows all bugs using own repository class.
+     */
+    public static function showAllUsingRepository()
+    {
+        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+
+        Service_Console::log('Listing all Bugs:');
+
+        /** @var Model_BugRepository $bugRepository */
+        $bugRepository = $entityManager->getRepository('Model_Bug');
+        $bugs = $bugRepository->getRecentBugs();
+
+        foreach ($bugs as $bug)
+        {
+            Service_Console::log();
+            Service_Console::log('Bug id [' . $bug->getId() . ']');
+            Service_Console::log('    description [' . $bug->getDescription() . ']');
+            Service_Console::log('    created     [' . $bug->getCreated()->format('d.m.Y H:i:s') . "]");
+            Service_Console::log('    reported by [' . $bug->getReporter()->getName() . ']');
+            Service_Console::log('    assigned to [' . $bug->getEngineer()->getName() . ']');
+            Service_Console::log('    status      [' . $bug->getStatus() . "]");
+            foreach ($bug->getProducts() as $product) {
+                Service_Console::log('        product id [' . $product->getId() . '] name [' . $product->getName() . ']');
+            }
+        }
+
+        Service_Console::log();
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+    }
+
+    /**
      * Shows all open bugs with their according products.
      */
     public static function showOpenBugsWithProducts()
