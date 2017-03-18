@@ -40,7 +40,7 @@ class Example_Product
     {
         $entityManager = service_Doctrine2Bootstrap::createEntityManager();
 
-        Service_Console::log('Listing all products');
+        Service_Console::log('Listing all Products:');
 
         // get all products
         $productRepository = $entityManager->getRepository('Model_Product');
