@@ -71,9 +71,9 @@ class Example_Bug
     }
 
     /**
-     * Shows all bugs.
+     * Shows all bugs using doctrine models.
      */
-    public static function showAll()
+    public static function showAllUsingModels()
     {
         $entityManager = service_Doctrine2Bootstrap::createEntityManager();
 
@@ -111,6 +111,56 @@ class Example_Bug
             Service_Console::log('    status      [' . $bug->getStatus() . "]");
             foreach ($bug->getProducts() as $product) {
                 Service_Console::log('        product id [' . $product->getId() . '] name [' . $product->getName() . ']');
+            }
+        }
+
+        Service_Console::log();
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+    }
+
+    /**
+     * Shows all bugs using arrays.
+     */
+    public static function showAllUsingArrays()
+    {
+        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+
+        Service_Console::log('Listing all Bugs:');
+
+        $dql = '
+            SELECT
+                b,
+                e,
+                r,
+                p
+            FROM
+                Model_Bug AS b
+            JOIN
+                b.engineer AS e
+            JOIN
+                b.reporter AS r
+            JOIN
+                b.products AS p
+            ORDER BY
+                b.created DESC
+            ';
+
+        $query = $entityManager->createQuery( $dql );
+
+        /** @var array[] $bugs */
+        $bugs = $query->getArrayResult();
+
+        foreach ($bugs as $bug)
+        {
+            Service_Console::log();
+            Service_Console::log('Bug id [' . $bug['id'] . ']');
+            Service_Console::log('    description [' . $bug['description'] . ']');
+            Service_Console::log('    created     [' . $bug['created']->format('d.m.Y H:i:s') . "]");
+            Service_Console::log('    reported by [' . $bug['reporter']['name'] . ']');
+            Service_Console::log('    assigned to [' . $bug['engineer']['name'] . ']');
+            Service_Console::log('    status      [' . $bug['status'] . "]");
+            foreach ($bug['products'] as $product) {
+                Service_Console::log('        product id [' . $product['id'] . '] name [' . $product['name'] . ']');
             }
         }
 
