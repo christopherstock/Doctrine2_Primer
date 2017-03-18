@@ -306,4 +306,28 @@ class Example_Bug
         Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
     }
 
+    /**
+     * Closes a specific bug.
+     */
+    public static function close()
+    {
+        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+
+        $bugId = 3;
+
+        Service_Console::log('Closing Bug with id [' . $bugId . '] ..');
+        Service_Console::log();
+
+        /** @var Model_Bug $bug */
+        $bug = $entityManager->find("Model_Bug", $bugId);
+        $bug->close();
+
+        $entityManager->flush();
+
+        Service_Console::log('Bug with id [' . $bug->getId() . '] is now in state [' . $bug->getStatus() . '].');
+
+        Service_Console::log();
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+    }
+
 }
