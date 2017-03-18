@@ -96,7 +96,7 @@ class Example_Product
 
         Service_Console::log();
         foreach ($products as $product) {
-            Service_Console::log('id [' . $product->getId() . '] name [' . $product->getName() . ']');
+            Service_Console::log('Product id [' . $product->getId() . '] name [' . $product->getName() . ']');
         }
         Service_Console::log();
 

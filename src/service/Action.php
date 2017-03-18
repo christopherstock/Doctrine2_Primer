@@ -20,6 +20,7 @@ class Service_Action
     const ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS = 12;
     const ACTION_ALTER_PRODUCT_NAME           = 13;
     const ACTION_CLOSE_BUG                    = 14;
+    const ACTION_SHOW_USER_DASHBOARD          = 15;
 
     /**
      * Performs the specified action.
@@ -89,6 +90,10 @@ class Service_Action
             case self::ACTION_CLOSE_BUG:
                 Example_Bug::close();
                 break;
+
+            case self::ACTION_SHOW_USER_DASHBOARD:
+                Example_User::showDashboard();
+                break;
         }
     }
 
@@ -141,6 +146,8 @@ class Service_Action
         Service_Console::log();
         Service_Console::log('<a href="?action=' . self::ACTION_ALTER_PRODUCT_NAME           . '">Alter a product\'s name</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_CLOSE_BUG                    . '">Set a Bug\'s status to \'CLOSE\'</a>');
+        Service_Console::log();
+        Service_Console::log('<a href="?action=' . self::ACTION_SHOW_USER_DASHBOARD          . '">Show a user\'s dashboard with all open bugs</a>');
         Service_Console::log();
     }
 
