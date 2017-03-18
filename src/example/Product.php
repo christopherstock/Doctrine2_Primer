@@ -33,4 +33,29 @@ class Example_Product
         Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
     }
 
+    /**
+     * Lists all products.
+     */
+    public static function showAll()
+    {
+        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+
+        Service_Console::log('Listing all products');
+
+        // get all products
+        $productRepository = $entityManager->getRepository('Model_Product');
+
+        /** @var Model_Product[] $products */
+        $products = $productRepository->findAll();
+
+        Service_Console::log();
+        foreach ($products as $product) {
+            Service_Console::log('id [' . $product->getId() . '] name [' . $product->getName() . ']');
+        }
+        Service_Console::log();
+
+        // show main menu
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+    }
+
 }
