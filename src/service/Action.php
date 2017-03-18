@@ -5,11 +5,12 @@
 class Service_Action
 {
 
-    const ACTION_SHOW_MAIN_MENU    = 0;
-    const ACTION_CREATE_USER       = 1;
-    const ACTION_CREATE_PRODUCT    = 2;
-    const ACTION_CREATE_BUG        = 3;
-    const ACTION_SHOW_ALL_PRODUCTS = 4;
+    const ACTION_SHOW_MAIN_MENU               = 0;
+    const ACTION_CREATE_USER                  = 1;
+    const ACTION_CREATE_PRODUCT               = 2;
+    const ACTION_CREATE_BUG                   = 3;
+    const ACTION_SHOW_ALL_PRODUCTS            = 4;
+    const ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS = 5;
 
     /**
      * Performs the specified action.
@@ -38,6 +39,10 @@ class Service_Action
 
             case self::ACTION_SHOW_ALL_PRODUCTS:
                 Example_Product::showAll();
+                break;
+
+            case self::ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS:
+                Example_Bug::showOpenBugsWithProducts();
                 break;
         }
     }
@@ -72,10 +77,13 @@ class Service_Action
     {
         Service_Console::log('Welcome to the main menu. Please choose your action:');
         Service_Console::log();
+
         Service_Console::log('<a href="?action=' . self::ACTION_CREATE_USER       . '">Create User</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_CREATE_PRODUCT    . '">Create Product</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_CREATE_BUG        . '">Create Bug</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_PRODUCTS . '">Show all Products</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS . '">Show open bugs with according Products</a>');
+
         Service_Console::log();
     }
 

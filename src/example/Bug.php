@@ -68,4 +68,46 @@ class Example_Bug
         Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
     }
 
+    /**
+     * Shows all bugs with their according products.
+     */
+    public static function showOpenBugsWithProducts()
+    {
+        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+
+        Service_Console::log('Listing all OPEN Bugs with their according products');
+        Service_Console::log();
+
+        $dql = '
+            SELECT
+                p.id,
+                p.name,
+                COUNT(b.id) AS openBugs
+            FROM
+                Model_Bug AS b
+            JOIN
+                b.products AS p
+            WHERE
+                b.status = \'OPEN\'
+            GROUP BY
+                p.id
+        ';
+        $productBugs = $entityManager->createQuery( $dql )->getScalarResult();
+
+        foreach ($productBugs as $productBug) {
+            Service_Console::log(
+                'Model_Product id ['
+                . $productBug['id']
+                . '] name ['
+                . $productBug['name']
+                . '] has ['
+                . $productBug['openBugs']
+                . '] open bugs.'
+            );
+        }
+
+        Service_Console::log();
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+    }
+
 }
