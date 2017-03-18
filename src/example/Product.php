@@ -34,6 +34,27 @@ class Example_Product
     }
 
     /**
+     * Finds a product by it's id.
+     */
+    public static function findProductById()
+    {
+        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+
+        $productId = 4;
+
+        Service_Console::log('Finding Product by id [' . $productId . ']');
+
+        /** @var Model_Product $product */
+        $product = $entityManager->find('Model_Product', $productId);
+
+        Service_Console::log('Product id [' . $product->getId() . '] name [' . $product->getName() . ']');
+        Service_Console::log();
+
+        // show main menu
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+    }
+
+    /**
      * Lists all products.
      */
     public static function showAll()
