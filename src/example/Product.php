@@ -42,10 +42,35 @@ class Example_Product
 
         $productId = 4;
 
-        Service_Console::log('Finding Product by id [' . $productId . ']');
+        Service_Console::log('Finding Product by id [' . $productId . '] ..');
 
         /** @var Model_Product $product */
         $product = $entityManager->find('Model_Product', $productId);
+
+        Service_Console::log('Product id [' . $product->getId() . '] name [' . $product->getName() . ']');
+        Service_Console::log();
+
+        // show main menu
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+    }
+
+    /**
+     * Finds a product by it's name.
+     */
+    public static function findProductByName()
+    {
+        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+
+        $productName = 'MyProduct 1489828405';
+
+        Service_Console::log('Finding Product by name [' . $productName . '] ..');
+
+        /** @var Model_Product $product */
+        $product = $entityManager->getRepository('Model_Product')->findOneBy(
+            array(
+                'name' => $productName,
+            )
+        );
 
         Service_Console::log('Product id [' . $product->getId() . '] name [' . $product->getName() . ']');
         Service_Console::log();
