@@ -1,6 +1,6 @@
 <?php
 
-require_once( __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php" );
+require_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 
 $id = 7;
 $newName = 'newName-product';

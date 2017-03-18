@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles Doctrine 2 framework bootstrapping.
+ * The console system that outputs colored messages to the web view.
  */
 class Service_Console
 {

@@ -1,6 +1,6 @@
 <?php
 
-require_once( __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php" );
+require_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 
 /** @var Model_Bug[] $bugs */
 $bugs = $entityManager->getRepository('Model_Bug')

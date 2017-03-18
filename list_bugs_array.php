@@ -1,6 +1,6 @@
 <?php
 
-require_once( __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php" );
+require_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 
 $dql = "SELECT b, e, r, p FROM Model_Bug AS b JOIN b.engineer e JOIN b.reporter r JOIN b.products p ORDER BY b.created DESC";
 $query = $entityManager->createQuery($dql);

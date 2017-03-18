@@ -1,6 +1,6 @@
 <?php
 
-require_once( __DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php" );
+require_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 
 $dql = 'SELECT b, e, r FROM Model_Bug AS b JOIN b.engineer AS e JOIN b.reporter AS r ORDER BY b.created DESC';
 
