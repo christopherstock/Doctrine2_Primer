@@ -36,7 +36,7 @@ class Example_Product
     /**
      * Finds a product by it's id.
      */
-    public static function findProductById()
+    public static function findById()
     {
         $entityManager = service_Doctrine2Bootstrap::createEntityManager();
 
@@ -57,7 +57,7 @@ class Example_Product
     /**
      * Finds a product by it's name.
      */
-    public static function findProductByName()
+    public static function findByName()
     {
         $entityManager = service_Doctrine2Bootstrap::createEntityManager();
 

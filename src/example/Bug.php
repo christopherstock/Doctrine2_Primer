@@ -73,7 +73,7 @@ class Example_Bug
     /**
      * Finds a specific bug by id.
      */
-    public static function findOne()
+    public static function findById()
     {
         $entityManager = service_Doctrine2Bootstrap::createEntityManager();
 
@@ -93,6 +93,43 @@ class Example_Bug
             . '] assignee name ['
             . $bug->getEngineer()->getName() . ']'
         );
+        Service_Console::log();
+
+        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+    }
+
+    /**
+     * Shows all bugs with the specified status.
+     */
+    public static function findByStatus()
+    {
+        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+
+        $status = 'CLOSE';
+        Service_Console::log('Retreiving Bugs by status [' . $status . '] ..');
+        Service_Console::log();
+
+        /** @var Model_Bug[] $bugs */
+        $bugs = $entityManager->getRepository('Model_Bug')->findBy(
+            array(
+                'status' => $status,
+            )
+        );
+        Service_Console::log('found [' . count($bugs) . '] bugs with status [' . $status . ']:');
+        Service_Console::log();
+
+        foreach ($bugs as $bug) {
+            Service_Console::log(
+                'Bug id ['
+                . $bug->getId()
+                . '] description ['
+                . $bug->getDescription()
+                . '] reporter name ['
+                . $bug->getReporter()->getName()
+                . '] assignee name ['
+                . $bug->getEngineer()->getName() . ']'
+            );
+        }
         Service_Console::log();
 
         Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);

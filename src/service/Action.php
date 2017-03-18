@@ -9,14 +9,15 @@ class Service_Action
     const ACTION_CREATE_USER                  = 1;
     const ACTION_CREATE_PRODUCT               = 2;
     const ACTION_CREATE_BUG                   = 3;
-    const ACTION_FIND_BUG                     = 4;
-    const ACTION_FIND_PRODUCT_BY_ID           = 5;
-    const ACTION_FIND_PRODUCT_BY_NAME         = 6;
-    const ACTION_SHOW_ALL_PRODUCTS            = 7;
-    const ACTION_SHOW_ALL_BUGS_MODELS         = 8;
-    const ACTION_SHOW_ALL_BUGS_ARRAYS         = 9;
-    const ACTION_SHOW_ALL_BUGS_REPOSITORY     = 10;
-    const ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS = 11;
+    const ACTION_FIND_BUG_BY_ID               = 4;
+    const ACTION_FIND_BUGS_BY_STATUS          = 5;
+    const ACTION_FIND_PRODUCT_BY_ID           = 6;
+    const ACTION_FIND_PRODUCT_BY_NAME         = 7;
+    const ACTION_SHOW_ALL_PRODUCTS            = 8;
+    const ACTION_SHOW_ALL_BUGS_MODELS         = 9;
+    const ACTION_SHOW_ALL_BUGS_ARRAYS         = 10;
+    const ACTION_SHOW_ALL_BUGS_REPOSITORY     = 11;
+    const ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS = 12;
 
     /**
      * Performs the specified action.
@@ -43,16 +44,20 @@ class Service_Action
                 Example_Bug::create();
                 break;
 
-            case self::ACTION_FIND_BUG:
-                Example_Bug::findOne();
+            case self::ACTION_FIND_BUG_BY_ID:
+                Example_Bug::findById();
+                break;
+
+            case self::ACTION_FIND_BUGS_BY_STATUS:
+                Example_Bug::findByStatus();
                 break;
 
             case self::ACTION_FIND_PRODUCT_BY_ID:
-                Example_Product::findProductById();
+                Example_Product::findById();
                 break;
 
             case self::ACTION_FIND_PRODUCT_BY_NAME:
-                Example_Product::findProductByName();
+                Example_Product::findByName();
                 break;
 
             case self::ACTION_SHOW_ALL_PRODUCTS:
@@ -112,7 +117,8 @@ class Service_Action
         Service_Console::log('<a href="?action=' . self::ACTION_CREATE_PRODUCT               . '">Create Product</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_CREATE_BUG                   . '">Create Bug</a>');
         Service_Console::log();
-        Service_Console::log('<a href="?action=' . self::ACTION_FIND_BUG                     . '">Find Bug by id</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_FIND_BUG_BY_ID               . '">Find Bug by id</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_FIND_BUGS_BY_STATUS          . '">Find Bugs by status</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_FIND_PRODUCT_BY_ID           . '">Find Product by id</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_FIND_PRODUCT_BY_NAME         . '">Find Product by name</a>');
         Service_Console::log();
