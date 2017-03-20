@@ -281,10 +281,11 @@ class Example_Bug
     /**
      * Shows all open bugs with their according products.
      */
-    public static function showOpenBugsWithProducts()
+    public static function showOpenBugCountForProducts()
     {
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
+        Service_Console::log();
         Service_Console::log('Listing all OPEN Bugs with their according products:');
         Service_Console::log();
 
@@ -306,13 +307,14 @@ class Example_Bug
 
         foreach ($productBugs as $productBug) {
             Service_Console::log(
-                'Model_Product id ['
+                '<b>Model_Product id ['
                 . $productBug['id']
                 . '] name ['
                 . $productBug['name']
                 . '] has ['
                 . $productBug['openBugs']
-                . '] open bugs.'
+                . '] open bugs.</b>',
+                Service_Console::COLOR_GREEN
             );
         }
 
