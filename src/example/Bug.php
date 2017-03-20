@@ -84,21 +84,23 @@ class Example_Bug
     {
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
-        $bugId = 7;
+        $bugId = 3;
+        Service_Console::log();
         Service_Console::log('Retreiving Bug by id [' . $bugId . '] ..');
 
         /** @var Model_Bug $bug */
         $bug = $entityManager->find("Model_Bug", $bugId);
 
         Service_Console::log(
-            'Bug id ['
+            '<b>Bug id ['
             . $bug->getId()
             . '] description ['
             . $bug->getDescription()
             . '] reporter name ['
             . $bug->getReporter()->getName()
             . '] assignee name ['
-            . $bug->getEngineer()->getName() . ']'
+            . $bug->getEngineer()->getName() . ']</b>',
+            Service_Console::COLOR_GREEN
         );
         Service_Console::log();
 
@@ -112,7 +114,8 @@ class Example_Bug
     {
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
-        $status = 'CLOSE';
+        $status = 'OPEN';
+        Service_Console::log();
         Service_Console::log('Retreiving Bugs by status [' . $status . '] ..');
         Service_Console::log();
 
@@ -122,19 +125,20 @@ class Example_Bug
                 'status' => $status,
             )
         );
-        Service_Console::log('found [' . count($bugs) . '] bugs with status [' . $status . ']:');
+        Service_Console::log('<b>found [' . count($bugs) . '] bugs with status [' . $status . ']:</b>', Service_Console::COLOR_GREEN);
         Service_Console::log();
 
         foreach ($bugs as $bug) {
             Service_Console::log(
-                'Bug id ['
+                '<b>Bug id ['
                 . $bug->getId()
                 . '] description ['
                 . $bug->getDescription()
                 . '] reporter name ['
                 . $bug->getReporter()->getName()
                 . '] assignee name ['
-                . $bug->getEngineer()->getName() . ']'
+                . $bug->getEngineer()->getName() . ']</b>',
+                Service_Console::COLOR_GREEN
             );
         }
         Service_Console::log();

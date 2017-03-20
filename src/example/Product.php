@@ -61,7 +61,7 @@ class Example_Product
     {
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
-        $productName = 'New Product at 2017-03-20 12:38:01';
+        $productName = 'New Product at 2017-03-20 14:35:23';
 
         Service_Console::log();
         Service_Console::log('Finding Product by name [' . $productName . '] ..');
