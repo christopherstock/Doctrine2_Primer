@@ -14,9 +14,9 @@ class Service_Action
     const ACTION_4_FIND_PRODUCT_BY_ID = 6;
     const ACTION_6_FIND_PRODUCT_BY_NAME = 7;
     const ACTION_8_FIND_ALL_PRODUCTS = 8;
-    const ACTION_SHOW_ALL_BUGS_MODELS         = 9;
-    const ACTION_SHOW_ALL_BUGS_ARRAYS         = 10;
-    const ACTION_SHOW_ALL_BUGS_REPOSITORY     = 11;
+    const ACTION_9_SHOW_ALL_BUGS_MODELS = 9;
+    const ACTION_10_SHOW_ALL_BUGS_ARRAYS = 10;
+    const ACTION_11_SHOW_ALL_BUGS_REPOSITORY = 11;
     const ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS = 12;
     const ACTION_ALTER_PRODUCT_NAME           = 13;
     const ACTION_CLOSE_BUG                    = 14;
@@ -67,15 +67,15 @@ class Service_Action
                 Example_Product::findAll();
                 break;
 
-            case self::ACTION_SHOW_ALL_BUGS_MODELS:
+            case self::ACTION_9_SHOW_ALL_BUGS_MODELS:
                 Example_Bug::showAllUsingModels();
                 break;
 
-            case self::ACTION_SHOW_ALL_BUGS_ARRAYS:
+            case self::ACTION_10_SHOW_ALL_BUGS_ARRAYS:
                 Example_Bug::showAllUsingArrays();
                 break;
 
-            case self::ACTION_SHOW_ALL_BUGS_REPOSITORY:
+            case self::ACTION_11_SHOW_ALL_BUGS_REPOSITORY:
                 Example_Bug::showAllUsingRepository();
                 break;
 
@@ -148,16 +148,12 @@ class Service_Action
         Service_Console::log('<a href="?action=' . self::ACTION_7_FIND_BUGS_BY_STATUS        . '">7. Find Bugs by status</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_8_FIND_ALL_PRODUCTS          . '">8. Find all Products</a>');
         Service_Console::log();
-
-
-
-
-
+        Service_Console::log('Using DQL:');
+        Service_Console::log('<a href="?action=' . self::ACTION_9_SHOW_ALL_BUGS_MODELS       . '">9. Show all Bugs (Models)</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_10_SHOW_ALL_BUGS_ARRAYS      . '">10. Show all Bugs (Arrays)</a>');
         Service_Console::log();
-        Service_Console::log();
-        Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_BUGS_MODELS         . '">Show all Bugs (Models)</a>');
-        Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_BUGS_ARRAYS         . '">Show all Bugs (Arrays)</a>');
-        Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_BUGS_REPOSITORY     . '">Show all Bugs (Repository)</a>');
+        Service_Console::log('Using DQL and own repository class:');
+        Service_Console::log('<a href="?action=' . self::ACTION_11_SHOW_ALL_BUGS_REPOSITORY  . '">11. Show all Bugs (own repository)</a>');
         Service_Console::log();
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_OPEN_BUGS_WITH_PRODUCTS . '">Show open Bugs with according Products</a>');
         Service_Console::log();

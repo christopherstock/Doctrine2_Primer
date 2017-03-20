@@ -153,7 +153,8 @@ class Example_Bug
     {
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
-        Service_Console::log('Listing all Bugs:');
+        Service_Console::log();
+        Service_Console::log('Listing all Bugs via models:');
 
         $dql = '
             SELECT
@@ -179,14 +180,14 @@ class Example_Bug
         foreach ($bugs as $bug)
         {
             Service_Console::log();
-            Service_Console::log('Bug id [' . $bug->getId() . ']');
-            Service_Console::log('    description [' . $bug->getDescription() . ']');
-            Service_Console::log('    created     [' . $bug->getCreated()->format('d.m.Y H:i:s') . "]");
-            Service_Console::log('    reported by [' . $bug->getReporter()->getName() . ']');
-            Service_Console::log('    assigned to [' . $bug->getEngineer()->getName() . ']');
-            Service_Console::log('    status      [' . $bug->getStatus() . "]");
+            Service_Console::log('<b>Bug id [' . $bug->getId() . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    description [' . $bug->getDescription() . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    created     [' . $bug->getCreated()->format('d.m.Y H:i:s') . "]</b>", Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    reported by [' . $bug->getReporter()->getName() . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    assigned to [' . $bug->getEngineer()->getName() . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    status      [' . $bug->getStatus() . "]</b>", Service_Console::COLOR_GREEN);
             foreach ($bug->getProducts() as $product) {
-                Service_Console::log('        product id [' . $product->getId() . '] name [' . $product->getName() . ']');
+                Service_Console::log('<b>        product id [' . $product->getId() . '] name [' . $product->getName() . ']</b>', Service_Console::COLOR_GREEN);
             }
         }
 
@@ -201,7 +202,8 @@ class Example_Bug
     {
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
-        Service_Console::log('Listing all Bugs:');
+        Service_Console::log();
+        Service_Console::log('Listing all Bugs via arrays:');
 
         $dql = '
             SELECT
@@ -229,14 +231,14 @@ class Example_Bug
         foreach ($bugs as $bug)
         {
             Service_Console::log();
-            Service_Console::log('Bug id [' . $bug['id'] . ']');
-            Service_Console::log('    description [' . $bug['description'] . ']');
-            Service_Console::log('    created     [' . $bug['created']->format('d.m.Y H:i:s') . "]");
-            Service_Console::log('    reported by [' . $bug['reporter']['name'] . ']');
-            Service_Console::log('    assigned to [' . $bug['engineer']['name'] . ']');
-            Service_Console::log('    status      [' . $bug['status'] . "]");
+            Service_Console::log('<b>Bug id [' . $bug['id'] . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    description [' . $bug['description'] . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    created     [' . $bug['created']->format('d.m.Y H:i:s') . "]</b>", Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    reported by [' . $bug['reporter']['name'] . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    assigned to [' . $bug['engineer']['name'] . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    status      [' . $bug['status'] . "]</b>", Service_Console::COLOR_GREEN);
             foreach ($bug['products'] as $product) {
-                Service_Console::log('        product id [' . $product['id'] . '] name [' . $product['name'] . ']');
+                Service_Console::log('<b>        product id [' . $product['id'] . '] name [' . $product['name'] . ']</b>', Service_Console::COLOR_GREEN);
             }
         }
 
@@ -251,7 +253,8 @@ class Example_Bug
     {
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
-        Service_Console::log('Listing all Bugs:');
+        Service_Console::log();
+        Service_Console::log('Listing all Bugs via own repository:');
 
         /** @var Model_BugRepository $bugRepository */
         $bugRepository = $entityManager->getRepository('Model_Bug');
@@ -260,14 +263,14 @@ class Example_Bug
         foreach ($bugs as $bug)
         {
             Service_Console::log();
-            Service_Console::log('Bug id [' . $bug->getId() . ']');
-            Service_Console::log('    description [' . $bug->getDescription() . ']');
-            Service_Console::log('    created     [' . $bug->getCreated()->format('d.m.Y H:i:s') . "]");
-            Service_Console::log('    reported by [' . $bug->getReporter()->getName() . ']');
-            Service_Console::log('    assigned to [' . $bug->getEngineer()->getName() . ']');
-            Service_Console::log('    status      [' . $bug->getStatus() . "]");
+            Service_Console::log('<b>Bug id [' . $bug->getId() . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    description [' . $bug->getDescription() . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    created     [' . $bug->getCreated()->format('d.m.Y H:i:s') . "]</b>", Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    reported by [' . $bug->getReporter()->getName() . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    assigned to [' . $bug->getEngineer()->getName() . ']</b>', Service_Console::COLOR_GREEN);
+            Service_Console::log('<b>    status      [' . $bug->getStatus() . "]</b>", Service_Console::COLOR_GREEN);
             foreach ($bug->getProducts() as $product) {
-                Service_Console::log('        product id [' . $product->getId() . '] name [' . $product->getName() . ']');
+                Service_Console::log('<b>        product id [' . $product->getId() . '] name [' . $product->getName() . ']</b>', Service_Console::COLOR_GREEN);
             }
         }
 
