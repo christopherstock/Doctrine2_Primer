@@ -16,7 +16,14 @@ class Example_Bug
         $engineerId = 2;
         $productIds = array( 3, 4, 5, );
 
-        Service_Console::log('Creating a new Bug for reporter [' . $reporterId . '] and engineer [' . $engineerId . '] ..');
+        Service_Console::log();
+        Service_Console::log(
+            'Creating a new Bug for reporter ['
+            . $reporterId
+            . '], engineer ['
+            . $engineerId
+            . '] and products ['
+            . implode(', ', $productIds) . '] ..');
 
         /** @var Model_User $reporter */
         $reporter = $entityManager->find("Model_User", $reporterId);
@@ -43,6 +50,9 @@ class Example_Bug
         $bug->setCreated(new DateTime("now"));
         $bug->setStatus("OPEN");
 
+        $bug->setReporter( $reporter );
+        $bug->setEngineer( $engineer );
+
         foreach ($productIds as $productId) {
 
             /** @var Model_Product $product */
@@ -57,9 +67,6 @@ class Example_Bug
 
             $bug->assignToProduct($product);
         }
-
-        $bug->setReporter( $reporter );
-        $bug->setEngineer( $engineer );
 
         $entityManager->persist($bug);
         $entityManager->flush();

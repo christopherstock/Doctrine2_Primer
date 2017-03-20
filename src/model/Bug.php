@@ -39,18 +39,18 @@ class Model_Bug
     protected $status;
 
     /**
-     * @ManyToOne(targetEntity="Model_User", inversedBy="assignedBugs")
-     *
-     * @var Model_User
-     **/
-    protected $engineer;
-
-    /**
      * @ManyToOne(targetEntity="Model_User", inversedBy="reportedBugs")
      *
      * @var Model_User
      **/
     protected $reporter;
+
+    /**
+     * @ManyToOne(targetEntity="Model_User", inversedBy="assignedBugs")
+     *
+     * @var Model_User
+     **/
+    protected $engineer;
 
     /**
      * @ManyToMany(targetEntity="Model_Product")
