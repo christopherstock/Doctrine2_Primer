@@ -3,7 +3,9 @@
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity @Table(name="user")
+ * @Entity
+ *
+ * @Table(name="user")
  */
 class Model_User
 {

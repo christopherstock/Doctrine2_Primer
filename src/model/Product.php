@@ -1,6 +1,8 @@
 <?php
 /**
- * @Entity @Table(name="product")
+ * @Entity
+ *
+ * @Table(name="product")
  **/
 class Model_Product
 {

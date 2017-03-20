@@ -2,6 +2,9 @@
 
 use Doctrine\ORM\EntityRepository;
 
+/**
+ * Handles access to the 'Model_Bug' entity.
+ */
 class Model_BugRepository extends EntityRepository
 {
 

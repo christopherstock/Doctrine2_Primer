@@ -4,6 +4,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @Entity(repositoryClass="Model_BugRepository")
+ *
  * @Table(name="bug")
  */
 class Model_Bug
