@@ -41,12 +41,13 @@ class Example_Product
 
         $productId = 4;
 
+        Service_Console::log();
         Service_Console::log('Finding Product by id [' . $productId . '] ..');
 
         /** @var Model_Product $product */
         $product = $entityManager->find('Model_Product', $productId);
 
-        Service_Console::log('Product id [' . $product->getId() . '] name [' . $product->getName() . ']');
+        Service_Console::log('<b>Product id [' . $product->getId() . '] name [' . $product->getName() . ']</b>', Service_Console::COLOR_GREEN);
         Service_Console::log();
 
         // show main menu
@@ -60,8 +61,9 @@ class Example_Product
     {
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
-        $productName = 'MyProduct 1489828405';
+        $productName = 'New Product at 2017-03-20 12:38:01';
 
+        Service_Console::log();
         Service_Console::log('Finding Product by name [' . $productName . '] ..');
 
         /** @var Model_Product $product */
@@ -71,7 +73,7 @@ class Example_Product
             )
         );
 
-        Service_Console::log('Product id [' . $product->getId() . '] name [' . $product->getName() . ']');
+        Service_Console::log('<b>Product id [' . $product->getId() . '] name [' . $product->getName() . ']</b>', Service_Console::COLOR_GREEN);
         Service_Console::log();
 
         // show main menu
