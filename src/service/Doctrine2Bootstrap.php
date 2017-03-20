@@ -16,15 +16,32 @@ class Service_Doctrine2Bootstrap
      */
     public static function createEntityManager()
     {
-        $dbConfig = array(
+        $dbConfig            = self::getDbConfig();
+        $doctrineModelConfig = self::getDoctrineModelConfig();
+
+        return EntityManager::create($dbConfig, $doctrineModelConfig);
+    }
+
+    /**
+     * @return array
+     */
+    private static function getDbConfig()
+    {
+        return array(
             'host'     => 'localhost',
             'user'     => 'root',
-            'password' => '',
+            'password' => 'bauhaus',
             'driver'   => 'pdo_mysql',
             'dbname'   => 'doctrine2',
         );
+    }
 
-        $doctrineConfig = Setup::createAnnotationMetadataConfiguration(
+    /**
+     * @return \Doctrine\ORM\Configuration
+     */
+    private static function getDoctrineModelConfig()
+    {
+        return Setup::createAnnotationMetadataConfiguration(
             array(
                 __DIR__
                 . DIRECTORY_SEPARATOR
@@ -34,8 +51,6 @@ class Service_Doctrine2Bootstrap
             ),
             self::IS_DEV_MODE
         );
-
-        return EntityManager::create($dbConfig, $doctrineConfig);
     }
 
 }
