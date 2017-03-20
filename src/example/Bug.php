@@ -279,7 +279,7 @@ class Example_Bug
     }
 
     /**
-     * Shows all open bugs with their according products.
+     * Shows all products with their open bug count.
      */
     public static function showOpenBugCountForProducts()
     {

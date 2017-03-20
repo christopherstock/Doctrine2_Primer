@@ -41,6 +41,7 @@ class Example_User
 
         $userId = 1;
 
+        Service_Console::log();
         Service_Console::log('Showing the User Dashboard for User with id [' . $userId . ']');
         Service_Console::log();
 
@@ -68,11 +69,11 @@ class Example_User
             ->setMaxResults(15)
             ->getResult();
 
-        Service_Console::log('User with id [' . $userId . '] has reported or is assigned to [' . count($bugs) . '] open Bugs:');
+        Service_Console::log('<b>User with id [' . $userId . '] has reported or is assigned to [' . count($bugs) . '] open Bugs:</b>', Service_Console::COLOR_GREEN);
         Service_Console::log();
 
         foreach ($bugs as $bug) {
-            Service_Console::log('    Bug id [' . $bug->getId() . '] description [' . $bug->getDescription() . ']');
+            Service_Console::log('<b>    Bug id [' . $bug->getId() . '] description [' . $bug->getDescription() . ']</b>', Service_Console::COLOR_GREEN);
         }
 
         Service_Console::log();
