@@ -1,9 +1,9 @@
 <?php
 /**
- *  TODO ASAP Show learning objective(s) after action in main menu and reorder main menu. (Workshop Agenda)
- *  TODO ASAP Create wiki page with ERD and action descriptions.
- *  TODO ASAP Rearrange action constants by their workshop id.
  *  TODO ASAP Prepare knowledge for linking a new project with a git repository!
+ *
+ *  TODO ASAP Create Workshop Agenda
+ *  TODO ASAP Create wiki page with ERD and action descriptions.
  */
     require_once( "vendor/autoload.php" );
 

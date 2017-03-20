@@ -5,22 +5,22 @@
 class Service_Action
 {
 
-    const ACTION_SHOW_MAIN_MENU               = 0;
+    const ACTION_0_SHOW_MAIN_MENU                    = 0;
     const ACTION_1_CREATE_USER                       = 1;
     const ACTION_2_CREATE_PRODUCT                    = 2;
     const ACTION_3_CREATE_BUG                        = 3;
-    const ACTION_5_FIND_BUG_BY_ID                    = 4;
-    const ACTION_7_FIND_BUGS_BY_STATUS               = 5;
-    const ACTION_4_FIND_PRODUCT_BY_ID                = 6;
-    const ACTION_6_FIND_PRODUCT_BY_NAME              = 7;
-    const ACTION_8_FIND_ALL_PRODUCTS                 = 8;
-    const ACTION_9_SHOW_ALL_BUGS_MODELS              = 9;
-    const ACTION_10_SHOW_ALL_BUGS_ARRAYS             = 10;
-    const ACTION_12_SHOW_ALL_BUGS_REPOSITORY         = 11;
-    const ACTION_13_SHOW_OPEN_BUG_COUNT_FOR_PRODUCTS = 12;
-    const ACTION_ALTER_PRODUCT_NAME                  = 13;
-    const ACTION_CLOSE_BUG                           = 14;
-    const ACTION_11_SHOW_USER_DASHBOARD              = 15;
+    const ACTION_4_FIND_PRODUCT_BY_ID                = 4;
+    const ACTION_5_FIND_BUG_BY_ID                    = 5;
+    const ACTION_6_UPDATE_PRODUCT_NAME               = 6;
+    const ACTION_7_UPDATE_BUG_STATUS                 = 7;
+    const ACTION_8_FIND_PRODUCT_BY_NAME              = 8;
+    const ACTION_9_FIND_BUGS_BY_STATUS               = 9;
+    const ACTION_10_FIND_ALL_PRODUCTS                = 10;
+    const ACTION_11_SHOW_ALL_BUGS_MODELS             = 11;
+    const ACTION_12_SHOW_ALL_BUGS_ARRAYS             = 12;
+    const ACTION_13_SHOW_USER_DASHBOARD              = 13;
+    const ACTION_14_SHOW_ALL_BUGS_REPOSITORY         = 14;
+    const ACTION_15_SHOW_OPEN_BUG_COUNT_FOR_PRODUCTS = 15;
 
     /**
      * Performs the specified action.
@@ -31,7 +31,7 @@ class Service_Action
     {
         switch ($id) {
 
-            case self::ACTION_SHOW_MAIN_MENU:
+            case self::ACTION_0_SHOW_MAIN_MENU:
                 self::showMainMenu();
                 break;
 
@@ -47,52 +47,52 @@ class Service_Action
                 Example_Bug::create();
                 break;
 
-            case self::ACTION_5_FIND_BUG_BY_ID:
-                Example_Bug::findById();
-                break;
-
-            case self::ACTION_7_FIND_BUGS_BY_STATUS:
-                Example_Bug::findByStatus();
-                break;
-
             case self::ACTION_4_FIND_PRODUCT_BY_ID:
                 Example_Product::findById();
                 break;
 
-            case self::ACTION_6_FIND_PRODUCT_BY_NAME:
-                Example_Product::findByName();
+            case self::ACTION_5_FIND_BUG_BY_ID:
+                Example_Bug::findById();
                 break;
 
-            case self::ACTION_8_FIND_ALL_PRODUCTS:
-                Example_Product::findAll();
-                break;
-
-            case self::ACTION_9_SHOW_ALL_BUGS_MODELS:
-                Example_Bug::showAllUsingModels();
-                break;
-
-            case self::ACTION_10_SHOW_ALL_BUGS_ARRAYS:
-                Example_Bug::showAllUsingArrays();
-                break;
-
-            case self::ACTION_12_SHOW_ALL_BUGS_REPOSITORY:
-                Example_Bug::showAllUsingRepository();
-                break;
-
-            case self::ACTION_13_SHOW_OPEN_BUG_COUNT_FOR_PRODUCTS:
-                Example_Bug::showOpenBugCountForProducts();
-                break;
-
-            case self::ACTION_ALTER_PRODUCT_NAME:
+            case self::ACTION_6_UPDATE_PRODUCT_NAME:
                 Example_Product::updateProductName();
                 break;
 
-            case self::ACTION_CLOSE_BUG:
+            case self::ACTION_7_UPDATE_BUG_STATUS:
                 Example_Bug::close();
                 break;
 
-            case self::ACTION_11_SHOW_USER_DASHBOARD:
+            case self::ACTION_8_FIND_PRODUCT_BY_NAME:
+                Example_Product::findByName();
+                break;
+
+            case self::ACTION_9_FIND_BUGS_BY_STATUS:
+                Example_Bug::findByStatus();
+                break;
+
+            case self::ACTION_10_FIND_ALL_PRODUCTS:
+                Example_Product::findAll();
+                break;
+
+            case self::ACTION_11_SHOW_ALL_BUGS_MODELS:
+                Example_Bug::showAllUsingModels();
+                break;
+
+            case self::ACTION_12_SHOW_ALL_BUGS_ARRAYS:
+                Example_Bug::showAllUsingArrays();
+                break;
+
+            case self::ACTION_13_SHOW_USER_DASHBOARD:
                 Example_User::showDashboard();
+                break;
+
+            case self::ACTION_14_SHOW_ALL_BUGS_REPOSITORY:
+                Example_Bug::showAllUsingRepository();
+                break;
+
+            case self::ACTION_15_SHOW_OPEN_BUG_COUNT_FOR_PRODUCTS:
+                Example_Bug::showOpenBugCountForProducts();
                 break;
         }
     }
@@ -117,7 +117,7 @@ class Service_Action
         if (isset($_GET['action'])) {
             return $_GET['action'];
         } else {
-            return Service_Action::ACTION_SHOW_MAIN_MENU;
+            return Service_Action::ACTION_0_SHOW_MAIN_MENU;
         }
     }
 
@@ -143,25 +143,27 @@ class Service_Action
         Service_Console::log('<a href="?action=' . self::ACTION_4_FIND_PRODUCT_BY_ID                . '">4. Find Product by id</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_5_FIND_BUG_BY_ID                    . '">5. Find Bug by id</a>');
         Service_Console::log();
+        Service_Console::log('Simple model update:');
+        Service_Console::log('<a href="?action=' . self::ACTION_6_UPDATE_PRODUCT_NAME               . '">6. Update a product\'s name</a>');
+        Service_Console::log();
+        Service_Console::log('Simple model update with own model method:');
+        Service_Console::log('<a href="?action=' . self::ACTION_7_UPDATE_BUG_STATUS                 . '">7. Update a Bug\'s status to \'CLOSE\'</a>');
+        Service_Console::log();
         Service_Console::log('Model retrieval via Repository:');
-        Service_Console::log('<a href="?action=' . self::ACTION_6_FIND_PRODUCT_BY_NAME              . '">6. Find Product by name</a>');
-        Service_Console::log('<a href="?action=' . self::ACTION_7_FIND_BUGS_BY_STATUS               . '">7. Find Bugs by status</a>');
-        Service_Console::log('<a href="?action=' . self::ACTION_8_FIND_ALL_PRODUCTS                 . '">8. Find all Products</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_8_FIND_PRODUCT_BY_NAME              . '">8. Find Product by name</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_9_FIND_BUGS_BY_STATUS               . '">9. Find Bugs by status</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_10_FIND_ALL_PRODUCTS                . '">10. Find all Products</a>');
         Service_Console::log();
         Service_Console::log('Using DQL:');
-        Service_Console::log('<a href="?action=' . self::ACTION_9_SHOW_ALL_BUGS_MODELS              . '">9. Show all Bugs (Models)</a>');
-        Service_Console::log('<a href="?action=' . self::ACTION_10_SHOW_ALL_BUGS_ARRAYS             . '">10. Show all Bugs (Arrays)</a>');
-        Service_Console::log('<a href="?action=' . self::ACTION_11_SHOW_USER_DASHBOARD              . '">11. Show a user\'s dashboard with all open bugs</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_11_SHOW_ALL_BUGS_MODELS             . '">11. Show all Bugs (Models)</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_12_SHOW_ALL_BUGS_ARRAYS             . '">12. Show all Bugs (Arrays)</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_13_SHOW_USER_DASHBOARD              . '">13. Show a user\'s dashboard with all open bugs</a>');
         Service_Console::log();
         Service_Console::log('Using DQL and own repository class:');
-        Service_Console::log('<a href="?action=' . self::ACTION_12_SHOW_ALL_BUGS_REPOSITORY         . '">12. Show all Bugs (own repository)</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_14_SHOW_ALL_BUGS_REPOSITORY         . '">14. Show all Bugs (own repository)</a>');
         Service_Console::log();
         Service_Console::log('Scalar value retrieval:');
-        Service_Console::log('<a href="?action=' . self::ACTION_13_SHOW_OPEN_BUG_COUNT_FOR_PRODUCTS . '">13. Show open Bugs with according product count</a>');
-        Service_Console::log();
-        Service_Console::log('<a href="?action=' . self::ACTION_ALTER_PRODUCT_NAME              . '">Alter a product\'s name</a>');
-        Service_Console::log('<a href="?action=' . self::ACTION_CLOSE_BUG                       . '">Set a Bug\'s status to \'CLOSE\'</a>');
-        Service_Console::log();
+        Service_Console::log('<a href="?action=' . self::ACTION_15_SHOW_OPEN_BUG_COUNT_FOR_PRODUCTS . '">15. Show open Bugs with according product count</a>');
         Service_Console::log();
     }
 

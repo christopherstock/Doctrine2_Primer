@@ -24,6 +24,7 @@ class Example_Bug
             . $engineerId
             . '] and products ['
             . implode(', ', $productIds) . '] ..');
+        Service_Console::log();
 
         /** @var Model_User $reporter */
         $reporter = $entityManager->find("Model_User", $reporterId);
@@ -34,14 +35,14 @@ class Example_Bug
         if (!$reporter) {
             Service_Console::log('<b>Non existing reporter id [' . $reporterId . ']</b>', Service_Console::COLOR_RED);
             Service_Console::log();
-            Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+            Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
             return;
         }
 
         if (!$engineer) {
             Service_Console::log('<b>Non existing engineer id [' . $engineerId . ']</b>', Service_Console::COLOR_RED);
             Service_Console::log();
-            Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+            Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
             return;
         }
 
@@ -61,7 +62,7 @@ class Example_Bug
             if (!$product) {
                 Service_Console::log('<b>Non existing product id [' . $productId . ']</b>', Service_Console::COLOR_RED);
                 Service_Console::log();
-                Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+                Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
                 return;
             }
 
@@ -74,7 +75,7 @@ class Example_Bug
         Service_Console::log('<b>Bug was created with id [' . $bug->getId() . ']</b>', Service_Console::COLOR_GREEN);
         Service_Console::log();
 
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -87,6 +88,7 @@ class Example_Bug
         $bugId = 3;
         Service_Console::log();
         Service_Console::log('Retreiving Bug by id [' . $bugId . '] ..');
+        Service_Console::log();
 
         /** @var Model_Bug $bug */
         $bug = $entityManager->find("Model_Bug", $bugId);
@@ -104,7 +106,7 @@ class Example_Bug
         );
         Service_Console::log();
 
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -143,7 +145,7 @@ class Example_Bug
         }
         Service_Console::log();
 
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -192,7 +194,7 @@ class Example_Bug
         }
 
         Service_Console::log();
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -243,7 +245,7 @@ class Example_Bug
         }
 
         Service_Console::log();
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -275,7 +277,7 @@ class Example_Bug
         }
 
         Service_Console::log();
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -319,7 +321,7 @@ class Example_Bug
         }
 
         Service_Console::log();
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -331,6 +333,7 @@ class Example_Bug
 
         $bugId = 3;
 
+        Service_Console::log();
         Service_Console::log('Closing Bug with id [' . $bugId . '] ..');
         Service_Console::log();
 
@@ -340,10 +343,10 @@ class Example_Bug
 
         $entityManager->flush();
 
-        Service_Console::log('Bug with id [' . $bug->getId() . '] is now in state [' . $bug->getStatus() . '].');
+        Service_Console::log('<b>Bug with id [' . $bug->getId() . '] is now in state [' . $bug->getStatus() . '].</b>', Service_Console::COLOR_GREEN);
 
         Service_Console::log();
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
 }

@@ -16,6 +16,7 @@ class Example_Product
 
         Service_Console::log();
         Service_Console::log('Creating a new product with productname [' . $newProductName . '] into the database..');
+        Service_Console::log();
 
         $newProduct = new Model_Product();
         $newProduct->setName($newProductName);
@@ -29,7 +30,7 @@ class Example_Product
         );
         Service_Console::log();
 
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -43,6 +44,7 @@ class Example_Product
 
         Service_Console::log();
         Service_Console::log('Finding Product by id [' . $productId . '] ..');
+        Service_Console::log();
 
         /** @var Model_Product $product */
         $product = $entityManager->find('Model_Product', $productId);
@@ -51,7 +53,7 @@ class Example_Product
         Service_Console::log();
 
         // show main menu
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -65,6 +67,7 @@ class Example_Product
 
         Service_Console::log();
         Service_Console::log('Finding Product by name [' . $productName . '] ..');
+        Service_Console::log();
 
         /** @var Model_Product $product */
         $product = $entityManager->getRepository('Model_Product')->findOneBy(
@@ -77,7 +80,7 @@ class Example_Product
         Service_Console::log();
 
         // show main menu
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -103,7 +106,7 @@ class Example_Product
         Service_Console::log();
 
         // show main menu
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -114,8 +117,9 @@ class Example_Product
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         $productId = 7;
-        $newName = 'newName-product' . $productId;
+        $newName = 'newName for product' . $productId;
 
+        Service_Console::log();
         Service_Console::log('Updating name for Product id [' . $productId . '] to [' . $newName . '] ..');
         Service_Console::log();
 
@@ -126,11 +130,11 @@ class Example_Product
 
         $entityManager->flush();
 
-        Service_Console::log('Updated name for product with id [' . $product->getId() . '] to [' . $product->getName() . '] ..');
+        Service_Console::log('<b>Updated name for product with id [' . $product->getId() . '] to [' . $product->getName() . ']</b>', Service_Console::COLOR_GREEN);
         Service_Console::log();
 
         // show main menu
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
 }

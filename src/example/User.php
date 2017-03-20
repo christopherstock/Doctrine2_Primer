@@ -12,10 +12,11 @@ class Example_User
     {
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
-        Service_Console::log();
         $newUsername = 'New User at ' . date('Y-m-d H:i:s', time());
 
+        Service_Console::log();
         Service_Console::log('Creating a new user with username [' . $newUsername . '] into the database..');
+        Service_Console::log();
 
         $newUser = new Model_User();
         $newUser->setName($newUsername);
@@ -29,7 +30,7 @@ class Example_User
         );
         Service_Console::log();
 
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
     /**
@@ -77,7 +78,7 @@ class Example_User
         }
 
         Service_Console::log();
-        Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
+        Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
     }
 
 }
