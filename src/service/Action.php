@@ -13,7 +13,7 @@ class Service_Action
     const ACTION_FIND_BUGS_BY_STATUS          = 5;
     const ACTION_3_FIND_PRODUCT_BY_ID = 6;
     const ACTION_4_FIND_PRODUCT_BY_NAME = 7;
-    const ACTION_SHOW_ALL_PRODUCTS            = 8;
+    const ACTION_5_FIND_ALL_PRODUCTS = 8;
     const ACTION_SHOW_ALL_BUGS_MODELS         = 9;
     const ACTION_SHOW_ALL_BUGS_ARRAYS         = 10;
     const ACTION_SHOW_ALL_BUGS_REPOSITORY     = 11;
@@ -63,8 +63,8 @@ class Service_Action
                 Example_Product::findByName();
                 break;
 
-            case self::ACTION_SHOW_ALL_PRODUCTS:
-                Example_Product::showAll();
+            case self::ACTION_5_FIND_ALL_PRODUCTS:
+                Example_Product::findAll();
                 break;
 
             case self::ACTION_SHOW_ALL_BUGS_MODELS:
@@ -141,6 +141,7 @@ class Service_Action
         Service_Console::log();
         Service_Console::log('<a href="?action=' . self::ACTION_3_FIND_PRODUCT_BY_ID         . '">3. Find Product by id</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_4_FIND_PRODUCT_BY_NAME       . '">4. Find Product by name</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_5_FIND_ALL_PRODUCTS          . '">5. Find all Products</a>');
         Service_Console::log();
 
 
@@ -150,7 +151,6 @@ class Service_Action
         Service_Console::log('<a href="?action=' . self::ACTION_FIND_BUG_BY_ID               . '">Find Bug by id</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_FIND_BUGS_BY_STATUS          . '">Find Bugs by status</a>');
         Service_Console::log();
-        Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_PRODUCTS            . '">Show all Products</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_BUGS_MODELS         . '">Show all Bugs (Models)</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_BUGS_ARRAYS         . '">Show all Bugs (Arrays)</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_SHOW_ALL_BUGS_REPOSITORY     . '">Show all Bugs (Repository)</a>');

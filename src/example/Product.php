@@ -83,11 +83,13 @@ class Example_Product
     /**
      * Lists all products.
      */
-    public static function showAll()
+    public static function findAll()
     {
         $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
+        Service_Console::log();
         Service_Console::log('Listing all Products:');
+        Service_Console::log();
 
         // get all products
         $productRepository = $entityManager->getRepository('Model_Product');
@@ -95,9 +97,8 @@ class Example_Product
         /** @var Model_Product[] $products */
         $products = $productRepository->findAll();
 
-        Service_Console::log();
         foreach ($products as $product) {
-            Service_Console::log('Product id [' . $product->getId() . '] name [' . $product->getName() . ']');
+            Service_Console::log('<b>Product id [' . $product->getId() . '] name [' . $product->getName() . ']</b>', Service_Console::COLOR_GREEN);
         }
         Service_Console::log();
 
