@@ -10,7 +10,7 @@ class Example_Bug
      */
     public static function create()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         $reporterId = 1;
         $engineerId = 2;
@@ -75,7 +75,7 @@ class Example_Bug
      */
     public static function findById()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         $bugId = 7;
         Service_Console::log('Retreiving Bug by id [' . $bugId . '] ..');
@@ -103,7 +103,7 @@ class Example_Bug
      */
     public static function findByStatus()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         $status = 'CLOSE';
         Service_Console::log('Retreiving Bugs by status [' . $status . '] ..');
@@ -140,7 +140,7 @@ class Example_Bug
      */
     public static function showAllUsingModels()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         Service_Console::log('Listing all Bugs:');
 
@@ -188,7 +188,7 @@ class Example_Bug
      */
     public static function showAllUsingArrays()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         Service_Console::log('Listing all Bugs:');
 
@@ -238,7 +238,7 @@ class Example_Bug
      */
     public static function showAllUsingRepository()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         Service_Console::log('Listing all Bugs:');
 
@@ -269,7 +269,7 @@ class Example_Bug
      */
     public static function showOpenBugsWithProducts()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         Service_Console::log('Listing all OPEN Bugs with their according products:');
         Service_Console::log();
@@ -311,7 +311,7 @@ class Example_Bug
      */
     public static function close()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         $bugId = 3;
 

@@ -10,11 +10,11 @@ class Example_Product
      */
     public static function create()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
-        // insert a product into the database
-        $newProductName = 'MyProduct ' . time();
+        $newProductName = 'New Product at ' . date('Y-m-d H:i:s', time());
 
+        Service_Console::log();
         Service_Console::log('Creating a new product with productname [' . $newProductName . '] into the database..');
 
         $newProduct = new Model_Product();
@@ -29,7 +29,6 @@ class Example_Product
         );
         Service_Console::log();
 
-        // show main menu
         Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
     }
 
@@ -38,7 +37,7 @@ class Example_Product
      */
     public static function findById()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         $productId = 4;
 
@@ -59,7 +58,7 @@ class Example_Product
      */
     public static function findByName()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         $productName = 'MyProduct 1489828405';
 
@@ -84,7 +83,7 @@ class Example_Product
      */
     public static function showAll()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         Service_Console::log('Listing all Products:');
 
@@ -109,7 +108,7 @@ class Example_Product
      */
     public static function updateProductName()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         $productId = 7;
         $newName = 'newName-product' . $productId;

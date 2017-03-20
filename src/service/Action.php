@@ -106,6 +106,7 @@ class Service_Action
         Service_Console::log('Doctrine 2 BAHAG Workshop, v. 0.0.1, (c) 2017 Mayflower GmbH');
         Service_Console::log('============================================================');
         Service_Console::log();
+        Service_Console::logSpacer();
     }
 
     /**
@@ -125,11 +126,17 @@ class Service_Action
      */
     private static function showMainMenu()
     {
-        Service_Console::log('Welcome to the main menu. Please choose your action:');
+        Service_Console::logSpacer();
 
         Service_Console::log();
-        Service_Console::log('<a href="?action=' . self::ACTION_CREATE_USER                  . '">Create User</a>');
-        Service_Console::log('<a href="?action=' . self::ACTION_CREATE_PRODUCT               . '">Create Product</a>');
+        Service_Console::log('Welcome to the <b>main menu</b>. Please choose your action:');
+        Service_Console::log();
+
+        Service_Console::log('Simple model creation:');
+        Service_Console::log();
+        Service_Console::log('<a href="?action=' . self::ACTION_CREATE_USER                  . '">1. Create User</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_CREATE_PRODUCT               . '">2. Create Product</a>');
+        Service_Console::log();
         Service_Console::log('<a href="?action=' . self::ACTION_CREATE_BUG                   . '">Create Bug</a>');
         Service_Console::log();
         Service_Console::log('<a href="?action=' . self::ACTION_FIND_BUG_BY_ID               . '">Find Bug by id</a>');

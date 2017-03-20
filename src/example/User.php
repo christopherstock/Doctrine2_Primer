@@ -10,10 +10,10 @@ class Example_User
      */
     public static function create()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
-        // insert a new user into the database
-        $newUsername = 'MyUser ' . time();
+        Service_Console::log();
+        $newUsername = 'New User at ' . date('Y-m-d H:i:s', time());
 
         Service_Console::log('Creating a new user with username [' . $newUsername . '] into the database..');
 
@@ -29,7 +29,6 @@ class Example_User
         );
         Service_Console::log();
 
-        // show main menu
         Service_Action::perform(Service_Action::ACTION_SHOW_MAIN_MENU);
     }
 
@@ -38,7 +37,7 @@ class Example_User
      */
     public static function showDashboard()
     {
-        $entityManager = service_Doctrine2Bootstrap::createEntityManager();
+        $entityManager = Service_Doctrine2Bootstrap::createEntityManager();
 
         $userId = 1;
 
