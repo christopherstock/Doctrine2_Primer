@@ -80,33 +80,96 @@ Nach dem initialen Durchlauf eines der beiden Skripte sind alle Tabellen in der 
 8. Aufbau der Workshop-Applikation
 ==================================
 
+Der Einstiegspunkt für alle Beispiele der Doctrine API befindet sich in der Datei '/index.php'. Hier wird lediglich der Wert des Get-Parameters 'action' ausgelesen und anhand dessen die entsprechende Beispielaktion in der Funktion 'Service_Action::perform' aufgerufen.
 
+9. Verwenden der Doctrine 2 PHP API
+===================================
 
+Über das Hauptmenü können alle 15 Beispielaktionen aufgerufen werden. 
 
+Alle Beispiele müssen, genau wie die CLI-Skripte, zunächst eine Instanz des Doctrine2 Entity Managers erzeugen, um das Doctrine-Framework nutzen zu können.
 
+9.1. ACTION_1_CREATE_USER
+=========================
 
-Funktionsweise und Ablauf innerhalb der index.php.
-Demonstration des Action-Systems.
+Es wird ein neues User-Model erstellt, mit einem Namen angereichert und anschließend gespeichert.
 
+9.2. ACTION_2_CREATE_PRODUCT
+============================
 
+Analog zu 9.1. wird hier ein Product-Model erstellt und gespeichert.
 
-5. Verwenden der Doctrine 2 PHP API
+9.3. ACTION_3_CREATE_BUG
+========================
 
-Vorführen aller Actions, die Doctrine2-Operationen durchführen.
+Das Beispiel demonstriert das Erstellen eines neuen Bug-Models, bei dem alle erforderlichen Felder gesetzt werden. Außerdem werden mehrere Produkte zugewiesen, sodass nach dem Speichern Einträge in der Tabelle 'model_bug_model_product' vorzufinden sind.
 
-5.1. 
+9.4. ACTION_4_FIND_PRODUCT_BY_ID
+================================
 
+Da in Doctrine jede Tabelle über eine Id verfügen muss, kann jedes Model über eine Id gefunden werden. Hierfür stellt Doctrine eine eigene Funktion bereit. Im Beispiel wird ein Produkt anhand dessen Id aus der Datenbank ausgelesen und dessen Name angezeigt.
 
+9.5. ACTION_5_FIND_BUG_BY_ID
+============================
 
+Analog zu 9.4. wird hier ein Bug anhand dessen Id aus der Datenbank ausgelesen.
+Beim Zugriff auf die Model-Felder 'reporter', 'engineer' und 'products' werden diese verknüpften User- und Product-Models vom Doctrine-Framework dynamisch nachgeladen ('Lazy Loading').
 
+9.6. ACTION_6_UPDATE_PRODUCT_NAME
+=================================
 
+Dieses Beispiel demonstriert, wie einfach es ist, den Wert eines Models unter Doctrine zu ändern.
+Ein Produkt wird anhand dessen Id aus der Datenbank geladen. Anschließend wird das Feld 'name' geändert und das Model anschließend persistiert.
 
+9.7. ACTION_7_UPDATE_BUG_STATUS
+===============================
 
+In diesem Beispiel wird, analog zu 9.6., der Status eines Bugs geändert. Das Beispiel demonstriert, dass sprechende Setter-Methoden, in diesem Falle die Methode 'close()', auch direkt in der Model-Klasse definiert werden können.
 
+9.8. ACTION_8_FIND_PRODUCT_BY_NAME
+==================================
 
-===============================================================================================
+Hier wird zum ersten mal die Funktion 'getRepository()' des Entity Managers aufgerufen. Hiermit wird das zuständige EntityRepository der Entität aufgerufen, mit dem erweiterte Suchen möglich sind. In diesem Fall wird nach einem bestimmten Wert in der Spalte 'name' gesucht und das erste Ergebnis zurückgeliefert.
 
-Datenbankabfragen können in der Doctrine-eigenen Zwischensprache Doctrine Query Language (DQL) formuliert werden. Der objektorientierte Ansatz ermöglicht ein abstraktes Arbeiten unabhängig von der verwendeten Datenbank. Auch können Datenbankinhalte objektorientiert verwaltet werden, ohne einen Wrapper dafür bereitzustellen. Die objektrelationale Funktionalität wird hier den Objekten selbst zugewiesen, ohne dass eine aufwändige Programmierung in PHP notwendig ist.
+9.9. ACTION_9_FIND_BUGS_BY_STATUS
+=================================
 
-Da der DBAL mehrere Datenbankserver ansprechen kann, umfasst DQL nur die Menge an SQL-Funktionalität, die in allen von Doctrine unterstützten SQL-Systemen verfügbar sind. Dadurch sind beispielsweise komplexere Joins nicht immer möglich. Zudem hat Doctrine strikte Einschränkungen bezüglich des Aufbaus der Datenbanken. So muss z.B. jede Tabelle zwingend einen Primärschlüssel aufweisen. Dadurch kann es insbesondere mit großen Bestandsdatenbanken, die vorher mit regulärem SQL gepflegt wurden, zu Problemen kommen.
+Dieses Beispiel ist analog zur 9.8., allerdings werden hier *alle* Bugs zurückgegeben, die den Status 'OPEN' haben.
 
+9.10. ACTION_10_FIND_ALL_PRODUCTS
+=================================
+
+Auch in diesem Beispiel wird das Repository der Entität 'Produkt' für die Rückgabe von Models verwendet. Diesmal werden *alle* Ergebnisse angefordert.
+
+9.11. ACTION_11_SHOW_ALL_BUGS_MODELS
+====================================
+
+In diesem Beispiel wird zum ersten mal eine Abfrage mittels der Doctrine-eigenen Zwischensprache Doctrine Query Language (DQL) durchgeführt. Deren objektorientierter Ansatz ermöglicht ein abstraktes Arbeiten unabhängig von der verwendeten Datenbank. DQL umfasst nur die Menge an SQL-Funktionalität, die in allen von Doctrine unterstützten SQL-Systemen verfügbar sind. Daher sind beispielsweise komplexere Joins nicht immer möglich.
+
+In diesem Fall werden alle Bugs mit deren zugehörigen Reportern, Engineers und Produkten mittels einer Query ausgelesen und als Models zurückgegeben, sodass Doctrine beim Zugriff auf die einzelnen Werte kein Lazy Loading mehr durchführen muss (s. Beispiel 9.5.).
+
+9.12. ACTION_12_SHOW_ALL_BUGS_ARRAYS
+====================================
+
+Das Beispiel ist identisch zu dem Beispiel 9.11., allerdings werden hier alle Daten direkt in ein mehrdimensionales Array geladen. Hierbei wird nochmals verdeutlicht, dass nach dem Ausführen der DQL alle abhängigen Daten bereits vorhanden sind.
+
+9.13. ACTION_13_SHOW_USER_DASHBOARD
+===================================
+
+Hier werden alle offenen Bugs für einen bestimmten User gezeigt. Das Beispiel demonstriert die Spezifizierung von Optionen für die definierte DQL ('setMaxResults') sowie das Binding von Parametern, welches ähnlich wie in PDO Statements funktioniert.
+
+9.14. ACTION_14_SHOW_ALL_BUGS_REPOSITORY
+========================================
+
+Dieses Beispiel demonstriert die Verwendung einer eigenen Repository-Klasse. Diese muss in der Entität mit der Annotation '@Entity(repositoryClass="...")' definiert werden und wird beim Zugriff auf das Repository der Entität automatisch zurückgegeben. Der Vorteil ist, dass z.B. DQL-Statements auf diese Art und Weise direkt in der Repository-Klasse der zugehörigen Entität definiert werden können und somit innerhalb einer sprechenden Funktion gekapselt sind.
+
+9.15. ACTION_15_SHOW_OPEN_BUG_COUNT_FOR_PRODUCTS
+================================================
+
+Dieses letzte Beispiel zeigt den Einsatz von skalaren Funktionen innerhalb eines DQL Statements.
+Es werden alle Produkte ausgelesen und für jedes Produkt die Anzahl an offenen Bugs angezeigt.
+
+Key Learnings
+=============
+
+Doctrine stellt ein sehr gut strukturiertes und durchdachtes Framework zur objektrelationalen Abbildung von Datenbanken dar und bietet mit dessen Datenbankabstraktionsschicht auch viel Flexibilität bei der Wahl des darunterliegenden Datenbanksystems. Allerdings verfügt es auch über einige strikte Einschränkungen bezüglich des Aufbaus der Datenbanken. So muss z.B. jede Tabelle zwingend einen Primärschlüssel aufweisen. Insbesondere mit großen oder stark verschachtelten Bestandsdatenbanken, die vorher mit regulärem SQL gepflegt wurden, kann es daher schnell zu Problemen bzgl. der Struktur und auch der Performance kommen.

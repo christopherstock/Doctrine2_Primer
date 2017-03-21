@@ -101,7 +101,12 @@ class Example_Bug
             . '] reporter name ['
             . $bug->getReporter()->getName()
             . '] assignee name ['
-            . $bug->getEngineer()->getName() . ']</b>',
+            . $bug->getEngineer()->getName()
+            . '] product count ['
+            . count($bug->getProducts())
+            . ']'
+
+            . '</b>',
             Service_Console::COLOR_GREEN
         );
         Service_Console::log();
