@@ -161,7 +161,7 @@ class Model_Bug
     }
 
     /**
-     * @return ArrayCollection
+     * @return Model_Product[]|ArrayCollection
      */
     public function getProducts()
     {

@@ -3,7 +3,7 @@
  * @Entity
  *
  * @Table(name="product")
- **/
+ */
 class Model_Product
 {
 
