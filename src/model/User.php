@@ -1,7 +1,4 @@
 <?php
-
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * @Entity
  *
@@ -25,26 +22,6 @@ class Model_User
     private $name;
 
     /**
-     * @OneToMany(targetEntity="Model_Bug", mappedBy="reporter")
-     *
-     * @var Model_Bug[]|ArrayCollection
-     */
-    private $reportedBugs;
-
-    /**
-     * @OneToMany(targetEntity="Model_Bug", mappedBy="engineer")
-     *
-     * @var Model_Bug[]|ArrayCollection
-     */
-    private $assignedBugs;
-
-    public function __construct()
-    {
-        $this->reportedBugs = new ArrayCollection();
-        $this->assignedBugs = new ArrayCollection();
-    }
-
-    /**
      * @return int
      */
     public function getId()
@@ -66,22 +43,6 @@ class Model_User
     public function setName($name)
     {
         $this->name = $name;
-    }
-
-    /**
-     * @param Model_Bug $bug
-     */
-    public function addReportedBug($bug)
-    {
-        $this->reportedBugs[] = $bug;
-    }
-
-    /**
-     * @param Model_Bug $bug
-     */
-    public function assignedToBug($bug)
-    {
-        $this->assignedBugs[] = $bug;
     }
 
 }

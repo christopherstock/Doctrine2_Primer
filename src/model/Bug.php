@@ -39,14 +39,14 @@ class Model_Bug
     private $status;
 
     /**
-     * @ManyToOne(targetEntity="Model_User", inversedBy="reportedBugs")
+     * @ManyToOne(targetEntity="Model_User")
      *
      * @var Model_User
      **/
     private $reporter;
 
     /**
-     * @ManyToOne(targetEntity="Model_User", inversedBy="assignedBugs")
+     * @ManyToOne(targetEntity="Model_User")
      *
      * @var Model_User
      **/
@@ -125,7 +125,6 @@ class Model_Bug
      */
     public function setEngineer($engineer)
     {
-        $engineer->assignedToBug($this);
         $this->engineer = $engineer;
     }
 
@@ -134,7 +133,6 @@ class Model_Bug
      */
     public function setReporter($reporter)
     {
-        $reporter->addReportedBug($this);
         $this->reporter = $reporter;
     }
 
