@@ -12,14 +12,14 @@ class Model_Product
      *
      * @var int
      */
-    protected $id;
+    private $id;
 
     /**
      * @Column(type="string")
      *
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      * @return int

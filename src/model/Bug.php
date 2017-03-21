@@ -15,49 +15,49 @@ class Model_Bug
      *
      * @var int
      */
-    protected $id;
+    private $id;
 
     /**
      * @Column(type="string")
      *
      * @var string
      */
-    protected $description;
+    private $description;
 
     /**
      * @Column(type="datetime")
      *
      * @var DateTime
      */
-    protected $created;
+    private $created;
 
     /**
      * @Column(type="string")
      *
      * @var string
      */
-    protected $status;
+    private $status;
 
     /**
      * @ManyToOne(targetEntity="Model_User", inversedBy="reportedBugs")
      *
      * @var Model_User
      **/
-    protected $reporter;
+    private $reporter;
 
     /**
      * @ManyToOne(targetEntity="Model_User", inversedBy="assignedBugs")
      *
      * @var Model_User
      **/
-    protected $engineer;
+    private $engineer;
 
     /**
      * @ManyToMany(targetEntity="Model_Product")
      *
-     * @var ArrayCollection
+     * @var Model_Product[]|ArrayCollection
      */
-    protected $products;
+    private $products;
 
     public function __construct()
     {

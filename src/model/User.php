@@ -11,32 +11,32 @@ class Model_User
 {
 
     /**
-     * @Id @GeneratedValue @Column(type="integer")
+     * @Id @Column(type="integer") @GeneratedValue
      *
      * @var int
      */
-    protected $id;
+    private $id;
 
     /**
      * @Column(type="string")
      *
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      * @OneToMany(targetEntity="Model_Bug", mappedBy="reporter")
      *
-     * @var Model_Bug[]
+     * @var Model_Bug[]|ArrayCollection
      */
-    protected $reportedBugs;
+    private $reportedBugs;
 
     /**
      * @OneToMany(targetEntity="Model_Bug", mappedBy="engineer")
      *
-     * @var ArrayCollection
+     * @var Model_Bug[]|ArrayCollection
      */
-    protected $assignedBugs;
+    private $assignedBugs;
 
     public function __construct()
     {

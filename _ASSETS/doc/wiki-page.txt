@@ -1,0 +1,144 @@
+Was ist Doctrine?
+=================
+
+Bei Doctrine handelt es sich um ein Framework für PHP, welches sowohl die Möglichkeit einer objektrelationalen Abbildung (object-relational mapping, ORM) als auch eine Datenbankabstraktionsschicht (database abstraction layer, DBAL) bereitstellt.
+
+Somit ermöglicht das Framework einen vereinfachten Zugriff auf verschiedene Datenbanktypen, wie z.B. MySQL, Microsoft SQL Server, PostgreSQL, Oracle usw.
+
+Workshop-Agenda
+===============
+
+[Index-Links]
+
+1. Codebasis
+============
+
+Der gesamte Projektcode befindet sich unter
+https://github.com/christopherstock/Doctrine2_Primer
+
+2. Anforderungen an das Testprojekt
+===================================
+
+In unserer Beispielanwendung soll ein Bugtracker-System erstellt werden. Hierbei sind die folgenden Anforderungen zu berücksichtigen:
+
+2.1. Gegeben sind die Entitäten "User", "Produkt" und "Bug".
+2.2. Alle User und Produkte verfügen über eine eindeutige id sowie über einen Namen.
+2.3. Jeder Bug kann ebenso über eine eindeutige id identifiziert werden und verfügt über eine Beschreibung sowie einem Erstellungsdatum.
+2.4. Jeder Bug wurde von genau einem User gemeldet und ist genau einem User zugewiesen. 
+2.5. Jeder Bug kann einem oder mehreren Produkten zugewiesen sein.
+
+3. Erstellen des ERDs
+=====================
+
+[Grafik erd1.png]
+
+4. Setup Doctrine via Composer
+==============================
+
+Zum Setup von Doctrine benötigen wir den Dependency Manager Composer. In unserer Projektdatei '/composer.json' sind alle Pakete definiert, die wir zum Betreiben von Doctrine benötigen. Diese werden von Composer automatisch unterhalb des Verzeichnisses 'vendor' installiert mittels eines CLI-Aufrufs von
+
+composer install
+
+5. Erstellen der Doctrine-Models
+================================
+
+Die Entitäten werden als PHP-Klassen erstellt. Anhand spezieller Annotations in der Klasse weiß Doctrine, auf welche Tabellen, Datentypen und Beziehungen sich diese Entität bezieht.
+
+5.1. Erstellen des Models "Product"
+===================================
+
+Klasse 'src/model/Product.php' bezieht sich auf die Tabelle 'product', definiert die beiden Felder 'id' und 'name' mit den entsprechenden Datentypen 'int' und 'string'. Die Visibility der Felder ist beliebig. Auch die Definition der Setter und Getter ist nicht obligatorisch.
+
+Die Namen sowie Reihenfolge der Felder werden exakt wie in der Klasse definiert in die Datenbank übernommen.
+
+5.2. Erstellen des Models "User"
+================================
+
+Klasse 'src/model/User.php' bezieht sich auf die Tabelle 'user' und definiert ebenfalls die beiden Felder 'id' und 'name' mit den selben Datentypen wie die Entität 'Product'. Zusätzlich werden die beiden Felder 'reportedBugs' und 'assignedBugs' definiert, durch die die beiden Fremdschlüssel in der Entität 'Bug' festgelegt werden. [notwendig?]
+
+
+
+
+
+
+
+
+
+6. Setup Doctrine CLI
+=====================
+
+Die Skripte unterhalb '/bin' beinhalten alle Aufrufe des Doctrine CLI-Clients. Damit dieser eine Verbindung zur Datenbank herstellen kann, benötigt er im ausführenden Verzeichnis eine Datei 'cli-config.php', in der die Datenbank- und die Doctrine-Konfiguration über eine Helper-Funktion zurückgegeben werden. Somit kennt Doctrine zum einen den Zugang zur Datenbank und zum anderen, wo sich die PHP-Klassen, die als die Doctrine-Models fungieren, befinden.
+
+Ein Aufruf der Skript-Datei 'bin/create_db_schema' legt 
+
+
+
+
+
+
+2. Erstellen der Doctrine 2 Models
+
+Definieren der Entitäten, Fields und Relations
+
+
+
+
+
+
+4. Das erstellte Datenbankschema
+================================
+
+[Grafik erd2.png]
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. Verwenden des Doctrine 2 CLI Tools
+
+Alle Tabellen und Indizes werden automatisch erstellt.
+Die Tabelle model_bug_model_product wird implizit angelegt!
+
+doctrine orm:schema-tool:create
+Erzeugt das Datenbank-Schema initial
+
+doctrine orm:schema-tool:update
+Aktualisiert das Datenbank-Schema (auch wenn noch nicht existent)
+
+
+
+4. Aufbau der Workshop-Applikation
+
+Funktionsweise und Ablauf innerhalb der index.php.
+Demonstration des Action-Systems.
+
+
+
+5. Verwenden der Doctrine 2 PHP API
+
+Vorführen aller Actions, die Doctrine2-Operationen durchführen.
+
+5.1. 
+
+
+
+
+
+
+
+
+
+===============================================================================================
+
+Datenbankabfragen können in der Doctrine-eigenen Zwischensprache Doctrine Query Language (DQL) formuliert werden. Der objektorientierte Ansatz ermöglicht ein abstraktes Arbeiten unabhängig von der verwendeten Datenbank. Auch können Datenbankinhalte objektorientiert verwaltet werden, ohne einen Wrapper dafür bereitzustellen. Die objektrelationale Funktionalität wird hier den Objekten selbst zugewiesen, ohne dass eine aufwändige Programmierung in PHP notwendig ist.
+
+Da der DBAL mehrere Datenbankserver ansprechen kann, umfasst DQL nur die Menge an SQL-Funktionalität, die in allen von Doctrine unterstützten SQL-Systemen verfügbar sind. Dadurch sind beispielsweise komplexere Joins nicht immer möglich. Zudem hat Doctrine strikte Einschränkungen bezüglich des Aufbaus der Datenbanken. So muss z.B. jede Tabelle zwingend einen Primärschlüssel aufweisen. Dadurch kann es insbesondere mit großen Bestandsdatenbanken, die vorher mit regulärem SQL gepflegt wurden, zu Problemen kommen.
+
