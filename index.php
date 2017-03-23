@@ -1,10 +1,5 @@
 <?php
-/**
- *  TODO ASAP Prepare knowledge for linking a new project with a git repository!
- *
- *  TODO ASAP Create Workshop Agenda
- *  TODO ASAP Create wiki page with ERD and action descriptions.
- */
+
     require_once( "vendor/autoload.php" );
 
     Service_Action::acclaim();
