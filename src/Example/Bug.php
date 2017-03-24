@@ -46,13 +46,14 @@ class Example_Bug
             return;
         }
 
-        $bug = new Model_Bug();
-        $bug->setDescription("Something does not work!");
-        $bug->setCreated(new DateTime("now"));
-        $bug->setStatus("OPEN");
+        $newBug = new Model_Bug();
 
-        $bug->setReporter( $reporter );
-        $bug->setEngineer( $engineer );
+        $newBug->setDescription("Something does not work!");
+        $newBug->setCreated(new DateTime("now"));
+        $newBug->setStatus("OPEN");
+
+        $newBug->setReporter( $reporter );
+        $newBug->setEngineer( $engineer );
 
         foreach ($productIds as $productId) {
 
@@ -66,13 +67,13 @@ class Example_Bug
                 return;
             }
 
-            $bug->assignToProduct($product);
+            $newBug->assignToProduct($product);
         }
 
-        $entityManager->persist($bug);
+        $entityManager->persist($newBug);
         $entityManager->flush();
 
-        Service_Console::log('<b>Bug was created with id [' . $bug->getId() . ']</b>', Service_Console::COLOR_GREEN);
+        Service_Console::log('<b>Bug was created with id [' . $newBug->getId() . ']</b>', Service_Console::COLOR_GREEN);
         Service_Console::log();
 
         Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
@@ -109,6 +110,7 @@ class Example_Bug
             . '</b>',
             Service_Console::COLOR_GREEN
         );
+
         Service_Console::log();
 
         Service_Action::perform(Service_Action::ACTION_0_SHOW_MAIN_MENU);
@@ -193,6 +195,8 @@ class Example_Bug
             Service_Console::log('<b>    reported by [' . $bug->getReporter()->getName() . ']</b>', Service_Console::COLOR_GREEN);
             Service_Console::log('<b>    assigned to [' . $bug->getEngineer()->getName() . ']</b>', Service_Console::COLOR_GREEN);
             Service_Console::log('<b>    status      [' . $bug->getStatus() . "]</b>", Service_Console::COLOR_GREEN);
+
+            // notice that getProducts() triggers a lazy loading here!
             foreach ($bug->getProducts() as $product) {
                 Service_Console::log('<b>        product id [' . $product->getId() . '] name [' . $product->getName() . ']</b>', Service_Console::COLOR_GREEN);
             }

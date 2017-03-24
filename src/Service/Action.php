@@ -47,6 +47,8 @@ class Service_Action
                 Example_Bug::create();
                 break;
 
+            // TODO Move to action id 3
+
             case self::ACTION_4_FIND_PRODUCT_BY_ID:
                 Example_Product::findById();
                 break;

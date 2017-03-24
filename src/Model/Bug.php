@@ -55,15 +55,10 @@ class Model_Bug
     /**
      * @ManyToMany(targetEntity="Model_Product") @JoinTable(name="bug_product")
      *
-     * @var Model_Product[]|ArrayCollection
+     * @var Model_Product[]
      */
     private $products;
-/*
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
-    }
-*/
+
     /**
      * @return int
      */
@@ -161,7 +156,7 @@ class Model_Bug
     }
 
     /**
-     * @return Model_Product[]|ArrayCollection
+     * @return Model_Product[]
      */
     public function getProducts()
     {
