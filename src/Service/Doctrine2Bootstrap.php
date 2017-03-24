@@ -47,7 +47,7 @@ class Service_Doctrine2Bootstrap
                 . DIRECTORY_SEPARATOR
                 . '..'
                 . DIRECTORY_SEPARATOR
-                . 'model'
+                . 'Model'
             ),
             self::IS_DEV_MODE
         );
