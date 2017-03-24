@@ -58,12 +58,12 @@ class Model_Bug
      * @var Model_Product[]|ArrayCollection
      */
     private $products;
-
+/*
     public function __construct()
     {
         $this->products = new ArrayCollection();
     }
-
+*/
     /**
      * @return int
      */

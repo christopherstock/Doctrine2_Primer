@@ -14,7 +14,6 @@ class ComposerStaticInitf079f2e4d66e9e1d4e5687c537dc40f8
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
-            'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\Console\\' => 26,
         ),
@@ -33,10 +32,6 @@ class ComposerStaticInitf079f2e4d66e9e1d4e5687c537dc40f8
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
-        'Symfony\\Component\\Yaml\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
         'Symfony\\Component\\Debug\\' => 
         array (

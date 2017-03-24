@@ -15,7 +15,7 @@ class Model_User
     private $id;
 
     /**
-     * @Column(type="string")
+     * @Column(type="text")
      *
      * @var string
      */
