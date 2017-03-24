@@ -53,7 +53,7 @@ class Model_Bug
     private $engineer;
 
     /**
-     * @ManyToMany(targetEntity="Model_Product")
+     * @ManyToMany(targetEntity="Model_Product") @JoinTable(name="bug_product")
      *
      * @var Model_Product[]|ArrayCollection
      */
