@@ -8,8 +8,8 @@ class Service_Action
     const ACTION_0_SHOW_MAIN_MENU                    = 0;
     const ACTION_1_CREATE_USER                       = 1;
     const ACTION_2_CREATE_PRODUCT                    = 2;
-    const ACTION_3_CREATE_BUG                        = 3;
-    const ACTION_4_FIND_PRODUCT_BY_ID                = 4;
+    const ACTION_3_FIND_PRODUCT_BY_ID                = 3;
+    const ACTION_4_CREATE_BUG                        = 4;
     const ACTION_5_FIND_BUG_BY_ID                    = 5;
     const ACTION_6_UPDATE_PRODUCT_NAME               = 6;
     const ACTION_7_UPDATE_BUG_STATUS                 = 7;
@@ -43,14 +43,12 @@ class Service_Action
                 Example_Product::create();
                 break;
 
-            case self::ACTION_3_CREATE_BUG:
-                Example_Bug::create();
+            case self::ACTION_3_FIND_PRODUCT_BY_ID:
+                Example_Product::findById();
                 break;
 
-            // TODO Move to action id 3
-
-            case self::ACTION_4_FIND_PRODUCT_BY_ID:
-                Example_Product::findById();
+            case self::ACTION_4_CREATE_BUG:
+                Example_Bug::create();
                 break;
 
             case self::ACTION_5_FIND_BUG_BY_ID:
@@ -138,11 +136,13 @@ class Service_Action
         Service_Console::log('<a href="?action=' . self::ACTION_1_CREATE_USER                       . '">1. Create User</a>');
         Service_Console::log('<a href="?action=' . self::ACTION_2_CREATE_PRODUCT                    . '">2. Create Product</a>');
         Service_Console::log();
-        Service_Console::log('Dependent model creation:');
-        Service_Console::log('<a href="?action=' . self::ACTION_3_CREATE_BUG                        . '">3. Create Bug</a>');
-        Service_Console::log();
         Service_Console::log('Simple model retrieval:');
-        Service_Console::log('<a href="?action=' . self::ACTION_4_FIND_PRODUCT_BY_ID                . '">4. Find Product by id</a>');
+        Service_Console::log('<a href="?action=' . self::ACTION_3_FIND_PRODUCT_BY_ID                . '">3. Find Product by id</a>');
+        Service_Console::log();
+        Service_Console::log('Dependent model creation:');
+        Service_Console::log('<a href="?action=' . self::ACTION_4_CREATE_BUG                        . '">4. Create Bug</a>');
+        Service_Console::log();
+        Service_Console::log('Lazy loading:');
         Service_Console::log('<a href="?action=' . self::ACTION_5_FIND_BUG_BY_ID                    . '">5. Find Bug by id</a>');
         Service_Console::log();
         Service_Console::log('Simple model update:');
